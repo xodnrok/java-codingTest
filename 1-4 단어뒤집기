@@ -1,0 +1,52 @@
+4. 단어 뒤집기
+설명
+
+N개의 단어가 주어지면 각 단어를 뒤집어 출력하는 프로그램을 작성하세요.
+
+
+입력
+
+첫 줄에 자연수 N(3<=N<=20)이 주어집니다.
+
+두 번째 줄부터 N개의 단어가 각 줄에 하나씩 주어집니다. 단어는 영어 알파벳으로만 구성되어 있습니다.
+
+
+출력
+
+N개의 단어를 입력된 순서대로 한 줄에 하나씩 뒤집어서 출력합니다
+
+예시 입력 1                     예시 출력 1
+3                              doog
+good                           emiT
+Time                           giB
+Big  
+
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        String answer = "";
+
+        int number = input.nextInt();
+        ArrayList<String> strings = new ArrayList<>();
+        for (int i = 0; i < number; i++) {
+            String str = input.next();
+            strings.add(str);
+        }
+
+        ArrayList<StringBuilder> stringBuilders = new ArrayList<>();
+        for (int i = 0; i < number; i++) {
+            StringBuilder sb = new StringBuilder(strings.get(i));
+            stringBuilders.add(sb.reverse());
+
+        }
+
+        for (int i = 0; i < number; i++) {
+            System.out.println(stringBuilders.get(i));
+        }
+
+    }
