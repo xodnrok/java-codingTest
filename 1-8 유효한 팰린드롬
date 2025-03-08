@@ -22,14 +22,19 @@
 
 found7, time: study; Yduts; emit, 7Dnuof                   YES
 
-import java.util.Scanner;
-  
-public class Main {
-  public static void main(String[] args){
-    Scanner in=new Scanner(System.in);
-    int input1 = in.nextInt();
-    int input2 = in.nextInt();
-    System.out.println(input1 + input2);
-    return ;
-  }
+import java.util.*;
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        String str = input.nextLine();
+
+        String answer = str.toUpperCase().replaceAll("[^A-Z]", "");
+        if (answer.equals(new StringBuilder(answer).reverse().toString())) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+    }
 }
