@@ -34,15 +34,13 @@ class Main {
             if (number[i] == 0) {
                 count++;
                 for (int j = i; j <= n; j += i) {
-                    if (number[j] / i == 0) {
-                        number[j] = 1;
-                    }
+                    number[j] = 1;
+
                 }
             }
         }
         System.out.println(count);
 
-
-
     }
 }
+
