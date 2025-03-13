@@ -34,3 +34,80 @@ OX 문제는 맞거나 틀린 두 경우의 답을 가지는 문제를 말한다
   
 10                                     10
 1 0 1 1 1 0 0 1 1 0
+
+import java.util.*;
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+
+        int[] number = new int[n + 1];
+        number[n] = 5;
+
+        for (int i = 0; i < n; i++) {
+            number[i] = input.nextInt();
+        }
+
+        int[] answer = new int[n];
+
+        int sum = 0;
+
+        int count = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (number[i] == 1 && number[i+1] == 1) {
+                answer[i] = 1 + count;
+                count++;
+            } else if (number[i] == 0) {
+                answer[i] = 0;
+            } else {
+                answer[i] = 1 + count;
+                count = 0;
+            }
+        }
+
+        for (int i : answer) {
+            sum += i;
+        }
+        System.out.println(sum);
+
+    }
+}
+
+두번째 방법
+
+import java.util.*;
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+
+        int[] number = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            number[i] = input.nextInt();
+        }
+
+        int sum = 0;
+        int count = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (number[i] == 1) {
+                count++;
+                sum += count;
+            } else {
+                count = 0;
+            }
+        }
+
+        System.out.println(sum);
+
+    }
+}
+
+
+
