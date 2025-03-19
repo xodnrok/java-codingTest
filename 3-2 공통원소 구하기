@@ -39,23 +39,26 @@ class Main {
         Scanner input = new Scanner(System.in);
         int n1 = input.nextInt();
         int[] arr1 = new int[n1];
+
         for (int i = 0; i < n1; i++) {
             arr1[i] = input.nextInt();
         }
 
         int n2 = input.nextInt();
         int[] arr2 = new int[n2];
+
         for (int i = 0; i < n2; i++) {
             arr2[i] = input.nextInt();
         }
 
-        Arrays.sort(arr1);
-        Arrays.sort(arr2);
-
         int p1 = 0;
         int p2 = 0;
 
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+
         List<Integer> answer = new ArrayList<>();
+
         while (p1 < n1 && p2 < n2) {
             if (arr1[p1] == arr2[p2]) {
                 answer.add(arr1[p1]);
@@ -67,8 +70,6 @@ class Main {
                 p2++;
             }
         }
-
-        Collections.sort(answer);
 
         for (Integer i : answer) {
             System.out.printf(i + " ");
