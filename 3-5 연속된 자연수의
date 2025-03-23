@@ -40,7 +40,7 @@ class Main {
         int n = input.nextInt();
 
         int answercount = 0;
-        int count = 0;
+     
         int sum = 0;
 
         int[] arr = new int[n];
@@ -52,16 +52,15 @@ class Main {
 
         for (int pEnd = 1; pEnd < n; pEnd++) {
             sum += arr[pEnd];
-            count++;
 
-            if (count >= 2 && sum == n) {
+            if (sum == n) {
                 answercount++;
             }
 
             while (sum >= n) {
                 sum -= arr[pStart++];
                 count--;
-                if (count >= 2 && sum == n) {
+                if (sum == n) {
                     answercount++;
                 }
             }
@@ -86,7 +85,7 @@ class Main {
         int n = input.nextInt();
 
         int answercount = 0;
-        int count = 0;
+        
         int sum = 0;
 
         int[] arr = new int[n/2+2];
@@ -100,14 +99,14 @@ class Main {
             sum += arr[pEnd];
             count++;
 
-            if (count >= 2 && sum == n) {
+            if (&& sum == n) {
                 answercount++;
             }
 
             while (sum >= n) {
                 sum -= arr[pStart++];
                 count--;
-                if (count >= 2 && sum == n) {
+                if (sum == n) {
                     answercount++;
                 }
             }
