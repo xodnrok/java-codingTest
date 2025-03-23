@@ -40,7 +40,7 @@ class Main {
         int n = input.nextInt();
 
         int answercount = 0;
-     
+
         int sum = 0;
 
         int[] arr = new int[n];
@@ -59,7 +59,7 @@ class Main {
 
             while (sum >= n) {
                 sum -= arr[pStart++];
-                count--;
+
                 if (sum == n) {
                     answercount++;
                 }
@@ -70,9 +70,8 @@ class Main {
     }
 }
 
+조금더 최적화 방법
 
-
-조금더 최적화 정답
 
 import java.util.*;
 
@@ -85,27 +84,27 @@ class Main {
         int n = input.nextInt();
 
         int answercount = 0;
-        
-        int sum = 0;
 
-        int[] arr = new int[n/2+2];
-        for (int i = 0; i < n/2+2; i++) {
-            arr[i] = i;
+        int sum = 0;
+        int m = n / 2 + 1;
+
+        int[] arr = new int[m];
+        for (int i = 0; i < m; i++) {
+            arr[i] = i+1;
         }
 
-        int pStart = 1;
+        int pStart = 0;
 
-        for (int pEnd = 1; pEnd < n/2+2; pEnd++) {
+        for (int pEnd = 0; pEnd < m; pEnd++) {
             sum += arr[pEnd];
-            count++;
 
-            if (&& sum == n) {
+            if (sum == n) {
                 answercount++;
             }
 
             while (sum >= n) {
                 sum -= arr[pStart++];
-                count--;
+
                 if (sum == n) {
                     answercount++;
                 }
@@ -115,6 +114,9 @@ class Main {
         System.out.println(answercount);
     }
 }
+
+
+
 
 
 
