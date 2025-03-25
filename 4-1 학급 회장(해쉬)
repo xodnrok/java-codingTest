@@ -1,0 +1,118 @@
+설명
+
+학급 회장을 뽑는데 후보로 기호 A, B, C, D, E 후보가 등록을 했습니다.
+
+투표용지에는 반 학생들이 자기가 선택한 후보의 기호(알파벳)가 쓰여져 있으며 선생님은 그 기호를 발표하고 있습니다.
+
+선생님의 발표가 끝난 후 어떤 기호의 후보가 학급 회장이 되었는지 출력하는 프로그램을 작성하세요.
+
+반드시 한 명의 학급회장이 선출되도록 투표결과가 나왔다고 가정합니다.
+
+
+입력
+
+첫 줄에는 반 학생수 N(5<=N<=50)이 주어집니다.
+
+두 번째 줄에 N개의 투표용지에 쓰여져 있던 각 후보의 기호가 선생님이 발표한 순서대로 문자열로 입력됩니다.
+
+
+출력
+
+학급 회장으로 선택된 기호를 출력합니다.
+
+예시 입력 1                       예시 출력 1
+
+15                                C
+BACBACCACCBDEDE
+
+
+
+해쉬맵 사용후 풀이
+
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+        String s = input.next();
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        char[] c = s.toCharArray();
+        for (char student : c) {
+            map.put(student, map.getOrDefault(student, 0) + 1);
+        }
+        int max = 0;
+        char answer = ' ';
+
+        for (Character character : map.keySet()) {
+            if (map.get(character) > max) {
+                max = map.get(character);
+                answer = character;
+            }
+        }
+        System.out.println(answer);
+    }
+}
+
+
+해쉬맵 사용하지 않고 푼 답안지
+
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+        String answer = input.next();
+
+        int aCount = 0;
+        int bCount = 0;
+        int cCount = 0;
+        int dCount = 0;
+        int eCount = 0;
+
+        for (int i = 0; i < answer.length(); i++) {
+            if (answer.charAt(i) == 'A') {
+                aCount++;
+            } else if (answer.charAt(i) == 'B') {
+                bCount++;
+            } else if (answer.charAt(i) == 'B') {
+                bCount++;
+            } else if (answer.charAt(i) == 'C') {
+                cCount++;
+            } else if (answer.charAt(i) == 'D') {
+                dCount++;
+            } else if (answer.charAt(i) == 'E') {
+                eCount++;
+            }
+        }
+
+
+        int max = 0;
+        max = Math.max(aCount, bCount);
+        max = Math.max(max, cCount);
+        max = Math.max(max, dCount);
+        max = Math.max(max, eCount);
+        if (max == aCount) {
+            System.out.println("A");
+        } else if (max == bCount) {
+            System.out.println("B");
+        } else if (max == cCount) {
+            System.out.println("C");
+        } else if (max == dCount) {
+            System.out.println("D");
+        } else if (max == eCount) {
+            System.out.println("E");
+        }
+
+    }
+}
+
