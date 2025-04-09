@@ -41,6 +41,47 @@ N과 K가 주어질 때 공주를 구하러 갈 왕자의 번호를 출력하는
 
 8 3                        7
 
+
+//인프런 최적화 풀이
+
+import java.time.temporal.Temporal;
+import java.util.*;
+import java.util.stream.Stream;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+        int k = input.nextInt();
+        int answer = 0;
+        Deque<Integer> deque = new ArrayDeque<>();
+
+        for (int i = 1; i <= n; i++) {
+            deque.offer(i);
+        }
+        while (!deque.isEmpty()) {
+            for (int i = 1; i < k; i++) {
+                deque.offer(deque.poll());
+            }
+            deque.poll();
+            if (deque.size() == 1) {
+                answer = deque.poll();
+            }
+        }
+        System.out.println(answer);
+    }
+}
+
+
+
+
+
+
+
+//내가 한 풀이
 import java.time.temporal.Temporal;
 import java.util.*;
 import java.util.stream.Stream;
