@@ -1,0 +1,41 @@
+자연수 N이 입력되면 재귀함수를 이용하여 1부터 N까지를 출력하는 프로그램을 작석하세요.
+
+입력설명 
+첫 번째 줄은 정수 N(3<=N<=10)이 입력된다.
+
+출력설명
+철째 줄에 추력한다.
+
+입력예제 1      출력예제1
+3              1 2 3
+
+import java.time.temporal.Temporal;
+import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+        DFS(n);
+
+    }
+
+    public static void DFS(int n) {
+
+        if (n == 0) {
+            return;
+        } else {
+            DFS(n - 1);
+            System.out.print(n +" ");
+        }
+
+
+    }
+
+
+}
