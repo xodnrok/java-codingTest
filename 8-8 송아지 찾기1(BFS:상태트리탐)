@@ -28,48 +28,49 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Scanner;
 
-public class Test {
+class Main {
 
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
-        int s = input.nextInt();
-        int e = input.nextInt();
-        System.out.println(BFS(s,e));
+        int n = input.nextInt();
+        int m = input.nextInt();
+
+        System.out.println(BFS(n,m));
     }
 
-    private static int BFS(int s, int e) {
-
-        Deque<Integer> deque = new ArrayDeque<>();
-        int[] arr = {1, -1, 5};
-        int[] number = new int[10001];
-
-        int level = 0;
-        number[s] = 1;
-        deque.offer(s);
+    private static int BFS(int n, int m) {
+        Deque<Integer> deque = new ArrayDeque<>(); //BFS 필요한 컬렉션
+        int[] ch = new int[10001]; //체크 배열(한번 간 곳 또 안가게)
+        int[] arr = {1, -1, 5}; //자식 넣을때 계산에 사용할 값
+        int level = 0; //트리 레벨
+        ch[n] = 1;
+        deque.offer(n);
 
         while (!deque.isEmpty()) {
-
             int size = deque.size();
 
             for (int i = 0; i < size; i++) {
                 Integer x = deque.poll();
-                if (x == e) {
+                if (x == m) {
                     return level;
                 }
-                for (int j = 0; j < 3; j++) {
-                    int nx = x + arr[j];
-                    if (nx == e) {
+                for (int j : arr) {
+                    int nx = x + j;
+
+                    if (nx == m) {
                         return level + 1;
                     }
-                    if (nx >= 1 && nx <= 10000 && number[nx] == 0) {
-                        number[nx] = 1;
+                    if (nx >= 1 && nx <= 10000 && ch[nx] == 0) {
+                        ch[nx] = 1;
                         deque.offer(nx);
                     }
                 }
             }
             level++;
         }
-
         return 0;
     }
+
+}
 }
