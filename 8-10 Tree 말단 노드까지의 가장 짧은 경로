@@ -1,0 +1,77 @@
+Tree 말단 노드까지의 가장 짧은 경로 
+
+아래 그림과 같은 이진트리에서 루트 노드 1에서 말단노드 까지의 길이 중 가장 짧은 길이를 구하는 프로그램을 작성하세요.
+각 경로의 길이는 루트노드에서 말단노드까지 가는데 이동하는 횟수를 즉 간선의 개수를 길이로 하겠습니다.
+
+                                    1
+
+                              2          3
+
+                      4            5 
+
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
+
+class Node {
+
+    int data;
+    Node lt, rt;
+
+    public Node(int data) {
+        this.data = data;
+        lt = rt = null;
+    }
+}
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Node node = new Node(1);
+        node.lt = new Node(2);
+        node.rt = new Node(3);
+
+        node.lt.lt = new Node(4);
+        node.lt.rt = new Node(5);
+        
+        System.out.println(BFS(node));
+
+    }
+
+    private static int BFS(Node node) {
+
+        Deque<Node> deque = new ArrayDeque<>();
+        int level = 0;
+        deque.offer(node);
+
+        while (!deque.isEmpty()) {
+
+            int size = deque.size();
+
+            for (int i = 0; i < size; i++) {
+
+                Node poll = deque.poll();
+
+                if (poll.lt == null && poll.rt == null) {
+                    return level;
+                }
+
+                if (poll.lt != null) {
+                    deque.offer(poll.lt);
+                }
+                if (poll.rt != null) {
+                    deque.offer(poll.rt);
+                }
+            }
+            level++;
+        }
+        return 0;
+    }
+
+
+}
+
+
