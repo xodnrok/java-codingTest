@@ -1,0 +1,108 @@
+저번 문제와 같지만 푸는 방식은 다르다. 저번에는 DFS로 이번에는 BFS로 풀었다
+
+설명
+
+N*N의 섬나라 아일랜드의 지도가 격자판의 정보로 주어집니다.
+
+각 섬은 1로 표시되어 상하좌우와 대각선으로 연결되어 있으며, 0은 바다입니다.
+
+섬나라 아일랜드에 몇 개의 섬이 있는지 구하는 프로그램을 작성하세요.
+
+Image1.jpg
+
+만약 위와 같다면 섬의 개수는 5개입니다.
+
+
+입력
+
+첫 번째 줄에 자연수 N(3<=N<=20)이 주어집니다.
+
+두 번째 줄부터 격자판 정보가 주어진다.
+
+
+출력
+
+첫 번째 줄에 섬의 개수를 출력한다.
+
+
+예시 입력 1                       예시 출력 1
+
+7                                5
+1 1 0 0 0 1 0
+0 1 1 0 1 1 0
+0 1 0 0 0 0 0
+0 0 0 1 0 1 1
+1 1 0 1 1 0 0
+1 0 0 0 1 0 0
+1 0 1 0 1 0 0
+
+
+import java.util.*;
+
+
+class Point {
+    int x;
+    int y;
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Main {
+
+    static int[] dx = {-1, -1, 0, 1, 1, 1, 0, -1};
+    static int[] dy = {0, 1, 1, 1, 0, -1, -1, -1};
+    static int[][] board;
+    static int n,answer;
+    static Deque<Point> deque = new ArrayDeque<>();
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        n = input.nextInt();
+        board = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                board[i][j] = input.nextInt();
+            }
+        }
+
+        for (int i = 0; i <n; i++) {
+            for (int j = 0; j <n; j++) {
+                if (board[i][j] == 1) {
+                    answer++;
+                    board[i][j] = 0;
+                    BFS(i, j);
+                }
+            }
+        }
+
+        System.out.println(answer);
+    }
+
+    private static void BFS(int x, int y) {
+        deque.offer(new Point(x, y));
+
+        while (!deque.isEmpty()) {
+            Point poll = deque.poll();
+
+            for (int i = 0; i < 8; i++) {
+
+                int nx = poll.x + dx[i];
+                int ny = poll.y + dy[i];
+
+                if (nx >= 0 && nx < n && ny >= 0 && ny < n && board[nx][ny] == 1) {
+                    board[nx][ny] = 0;
+                    deque.offer(new Point(nx, ny));
+                }
+            }
+        }
+    }
+}
+
+
+
+
