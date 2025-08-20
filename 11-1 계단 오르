@@ -53,5 +53,43 @@ class Main {
     }
 }
 
+재귀로 풀이
+import java.util.*;
+
+class Main {
+
+    static int arr[];
+    static int n,answer;
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        n = input.nextInt();
+
+        arr = new int[n + 1];
+
+
+        System.out.println(DFS(n));
+
+    }
+
+    private static int DFS(int i) {
+        if (arr[i] > 0) {
+            return arr[i];
+        }
+        if (i == 1) {
+            return arr[i] = 1;
+        }
+        if (i == 2) {
+            return arr[i] = 2;
+        } else {
+            return arr[i] = DFS(i - 2) + DFS(i - 1);
+        }
+    }
+}
+
+
+
+
+
 
 
