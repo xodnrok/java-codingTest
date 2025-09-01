@@ -43,3 +43,45 @@ class Main {
         return count;
     }
 }
+
+
+
+
+2회차 코드 
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+
+        Scanner input = new Scanner(System.in);
+
+        String request1 = input.next(); //문자 입력받기
+
+        String upperCase = request1.toUpperCase(); //전부다 대문자
+        String[] split1 = upperCase.split("");
+
+        String request2 = input.next();
+
+        String upperCase1 = request2.toUpperCase();
+
+        int answer = 0;
+
+        for (String s : split1) {
+            if (s.equals(upperCase1)) {
+                answer++;
+            }
+        }
+
+
+        System.out.println(answer);
+
+
+    }
+}
+
+
+
+
