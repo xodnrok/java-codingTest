@@ -50,3 +50,62 @@ class Main {
         }
 
     }
+
+
+2회차 코드
+
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+
+        ArrayList<String> list = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            list.add(input.next());
+        }
+
+        for (String s : list) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = s.length() - 1; i >= 0; i--) {
+                sb.append(s.charAt(i));
+            }
+            System.out.println(sb);
+        }
+    }
+}
+
+
+
+2회차 코드 조금더 최적화 
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+
+        ArrayList<String> list = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            list.add(input.next());
+        }
+
+        for (String s : list) {
+            StringBuilder sb = new StringBuilder(s);
+            System.out.println(sb.reverse());
+        }
+    }
+}
+
+
+
+
