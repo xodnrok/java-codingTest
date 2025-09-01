@@ -53,3 +53,34 @@ class Main {
     }
 
 }
+
+
+2회차
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        String next = input.next();
+
+        String answer = "";
+        StringBuilder sb = new StringBuilder(answer);
+
+        for (int i = 0; i < next.length(); i++) {
+            if (next.charAt(i) == Character.toUpperCase(next.charAt(i))) {
+                sb.append(Character.toLowerCase(next.charAt(i)));
+            } else {
+                sb.append(Character.toUpperCase(next.charAt(i)));
+            }
+        }
+        String response = sb.toString();
+        System.out.println(response);
+    }
+}
+
+
+
+
