@@ -50,3 +50,82 @@ public class Main {
         System.out.println(charArray);
     }
 }
+
+2회차 풀이 코드
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        String request = input.next();
+
+        String[] arr = request.split("");
+
+        int left = 0;
+        int right = request.length() - 1;
+
+        while (left < right) {
+            if (Character.isAlphabetic(request.charAt(left)) && Character.isAlphabetic(request.charAt(right))) {
+                arr[left] = String.valueOf(request.charAt(right));
+                arr[right] = String.valueOf(request.charAt(left));
+                left++;
+                right--;
+            } else if (!Character.isAlphabetic(request.charAt(left))) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        for (String s : arr) {
+            System.out.print(s);
+        }
+
+
+    }
+}
+
+
+조금더 최적화 코드 charArrary
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        String request = input.next();
+
+        char[] arr = request.toCharArray();
+
+        int left = 0;
+        int right = request.length() - 1;
+
+
+        while (left < right) {
+            if (Character.isAlphabetic(request.charAt(left)) && Character.isAlphabetic(request.charAt(right))) {
+                arr[left] = request.charAt(right);
+                arr[right] = request.charAt(left);
+                left++;
+                right--;
+            } else if (!Character.isAlphabetic(request.charAt(left))) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        for (char s : arr) {
+            System.out.print(s);
+        }
+
+
+    }
+}
+
+
+
