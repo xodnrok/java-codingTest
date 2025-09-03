@@ -45,3 +45,41 @@ public class Main {
         }
     }
 }
+
+
+2회차 문제 풀이
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String request = input.next();
+        String s = request.toUpperCase();
+        char[] array = s.toCharArray();
+        int left = 0;
+        int right = s.length() - 1;
+        boolean b = false;
+
+        while (left < right) {
+            if (array[left] == array[right]) {
+                left++;
+                right--;
+            } else {
+                b = true;
+                break;
+            }
+        }
+
+        if (b) {
+            System.out.println("NO");
+        } else {
+            System.out.println("YES");
+        }
+    }
+}
+
+
