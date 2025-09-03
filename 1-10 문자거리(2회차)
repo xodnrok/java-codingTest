@@ -59,3 +59,46 @@ class Main {
         }
     }
 }
+
+2회차 풀이 
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String s = input.next();
+        char t = input.next().charAt(0);
+
+        int[] arr = new int[s.length()];
+        Arrays.fill(arr, 100);
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == t) {
+                for (int j = 0; j < s.length(); j++) {
+                    if (arr[j] > Math.abs(i - j)) {
+                        arr[j] = Math.abs(i - j);
+                    }
+                }
+
+                for (int j = s.length() - 1; j >= 0; j--) {
+                    if (arr[j] > Math.abs(i - j)) {
+                        arr[j] = Math.abs(i - j);
+                    }
+                }
+            }
+        }
+
+        for (int i : arr) {
+            System.out.print(i + " ");
+        }
+
+
+    }
+}
+
+
+
