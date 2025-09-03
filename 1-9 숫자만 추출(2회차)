@@ -42,3 +42,24 @@ class Main {
 
     }
 }
+
+2회차 문제풀이
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String request = input.next();
+
+        String answer = request.replaceAll("[^0-9]", "");
+        Integer number = Integer.valueOf(answer);
+        System.out.println(number);
+    }
+}
+
+
+
