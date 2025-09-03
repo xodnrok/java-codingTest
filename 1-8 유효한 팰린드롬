@@ -38,3 +38,40 @@ class Main {
         }
     }
 }
+
+2회차 문제
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String s = input.nextLine().toUpperCase();
+
+        char[] charArray = s.toCharArray();
+
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : charArray) {
+            if (Character.isAlphabetic(c)) {
+                sb.append(c);
+            }
+        }
+
+        StringBuilder reverse = new StringBuilder(sb).reverse();
+
+        if (reverse.toString().equals(sb.toString())) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+
+    }
+}
+
+
+
