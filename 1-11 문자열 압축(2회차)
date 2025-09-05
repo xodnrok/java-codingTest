@@ -52,3 +52,42 @@ class Main {
     }
 }
 
+
+2회차 풀이 
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        String request = input.next();
+
+        int count = 1;
+        StringBuilder sb = new StringBuilder();
+
+        char[] arr = new char[request.length() + 1];
+
+        for (int i = 0; i < request.length(); i++) {
+            arr[i] = request.charAt(i);
+        }
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] == arr[i + 1]) {
+                count++;
+            } else {
+                sb.append(arr[i]);
+                if (count != 1) {
+                    sb.append(count);
+                }
+                count = 1;
+            }
+        }
+        System.out.println(sb);
+    }
+}
+
+
+
+
