@@ -100,5 +100,57 @@ class Main {
     }
 }
 
+two pass 알고리즘 사용(1회차와 동일한 알고리즘)
+
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String s = input.next();
+        char t = input.next().charAt(0);
+
+
+        int[] answer = new int[s.length()];
+        char[] arr = s.toCharArray();
+
+        int p = 100;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == t) {
+                p = 0;
+                answer[i] = 0;
+            } else {
+                p++;
+                answer[i] = p;
+            }
+        }
+
+        p = 100;
+        for (int i = arr.length-1; i >= 0; i--) {
+            if (arr[i] == t) {
+                p = 0;
+                answer[i] = 0;
+            } else {
+                p++;
+                if (answer[i] > p) {
+                    answer[i] = p;
+                }
+            }
+        }
+
+        for (int i : answer) {
+            System.out.print(i + " ");
+        }
+    }
+}
+
+
+
+
 
 
