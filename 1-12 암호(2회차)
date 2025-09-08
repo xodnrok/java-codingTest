@@ -74,3 +74,53 @@ class Main {
         System.out.println(answer);
     }
 }
+
+2회차 풀이 
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int num = input.nextInt();
+        String str = input.next();
+
+        int count = 0;
+        StringBuilder sb = new StringBuilder(); //받은 문자열 전부다 1과 0으로 바꾸기 위해서
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '#') {
+                sb.append(1);
+            } else {
+                sb.append(0);
+            }
+        }
+
+        String request = sb.toString();
+        StringBuilder builder = new StringBuilder(); //7개씩 끊어서 받기 위해서
+        StringBuilder answer = new StringBuilder(); //정답 문자 저장
+
+
+        for (int i = 0; i < request.length(); i++) {
+            builder.append(request.charAt(i));
+            count++;
+
+            if (count == 7) {
+                int decimalNumber = Integer.parseInt(builder.toString(), 2); //문자열로 된 2진수를 int 형인 2진수로
+                answer.append((char) decimalNumber); //이후 정답 answer 에 추가
+                count = 0;
+                builder.setLength(0);
+            }
+        }
+        
+
+        System.out.println(answer);
+
+
+    }
+}
+
+
+
