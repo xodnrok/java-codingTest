@@ -82,3 +82,57 @@ public class Main {
         }
     }
 }
+
+2회차 풀이
+
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt(); // 총 횟수
+
+        int[] aArr = new int[n]; //a의 정보
+        int[] bArr = new int[n]; //b의 정보
+        List<String> answer = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            aArr[i] = input.nextInt();
+        }
+
+
+        for (int i = 0; i < n; i++) {
+            bArr[i] = input.nextInt();
+        }
+
+
+        for (int i = 0; i < n; i++) {
+
+            if (aArr[i] == 1 && bArr[i] == 2) {
+                answer.add("B");
+            } else if (aArr[i] == 2 && bArr[i] == 3) {
+                answer.add("B");
+            } else if (aArr[i] == 3 && bArr[i] == 1) {
+                answer.add("B");
+            } else if (aArr[i] == bArr[i]) {
+                answer.add("D");
+            } else {
+                answer.add("A");
+            }
+        }
+
+
+        for (String s : answer) {
+            System.out.println(s);
+        }
+
+
+
+    }
+}
+
+
+
