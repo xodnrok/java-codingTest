@@ -110,4 +110,40 @@ class Main {
 }  
 
 
+2회차 풀이
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+
+        int[] arr = new int[n]; //사용자 점수 입력값 저장 배열
+        int count = 0;  //보너스 값
+        int answer = 0;  //정답값
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        for (int i : arr) {
+
+            if (i == 1) {
+                answer += i + count;
+                count++;
+            } else {
+                count = 0;
+            }
+        }
+
+        System.out.println(answer);
+    }
+}
+
+
+
+
 
