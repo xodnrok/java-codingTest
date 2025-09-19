@@ -94,5 +94,108 @@ class Main {
 
 }
 
+2회차 정답 풀이
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt();
+
+        int[][] arr = new int[n + 1][6]; //학생 학년정보 저장 배열
+        int count = 0; //총 몇번의 학생과 같은 반이였는지 카운트
+        int max = 0;
+        int answer = 0; //누가 회장으로 되는지
+
+
+        for (int i = 1; i <n+1; i++) {
+            for (int j = 1; j < 6; j++) {
+                arr[i][j] = input.nextInt();
+            }
+        }
+
+        for (int i = 1; i <n+1; i++) { //학생 기준 선택
+            count = 0;
+            for (int j = 1; j <n+1; j++) {//기준학생의 다른학생 골르는 반복문
+                for (int k = 1; k <6; k++) {//학년별로 비교
+
+                    if (arr[i][k] == arr[j][k]) {//기준학생 다른학생 같은 학년이였는지 비교
+                        count++;
+                        break; //같은반이였어? 가 중요하지 같은반을 총 몇번했는지 중요하지않다.
+                               //2학년 같은반 3학년 같은 반이라해서 count 가 또 증가하지는 않는다.
+                    }
+
+                }
+            }
+            if (count > max) {
+                max = count;
+                answer = i;
+            }
+        }
+
+        System.out.println(answer);
+
+
+
+    }
+}
+
+
+
+
+
+2회차 틀린 풀이
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt();
+
+        int count = 0; //학생들이 중복된 수
+        int[] answer = new int[n + 1]; //학생들이 몇번 중복 되어는지 카운트 저장
+        int[][] arr = new int[n + 1][n + 1]; //학생 학년 정보 저장
+
+        for (int i = 1; i < n+1; i++) {
+            for (int j = 1; j < n+1; j++) {
+                arr[i][j] = input.nextInt();
+            }
+        }
+
+        for (int h = 1; h < n + 1; h++) { //몇번째 학생인지
+            for (int j = 1; j < n + 1; j++) {
+                int ch = arr[h][j]; // 기준학생 학년
+                for (int i = 1; i < n + 1; i++) {
+                    if (ch == arr[i][j]) {
+                        count++;
+                    }
+                }
+                answer[h] = count;
+                count = 0;
+            }
+        }
+
+        int max = 0;
+        int human = 0;
+        for (int i = 1; i < n + 1; i++) {
+            if (answer[i] > max) {
+                max = answer[i];
+                human = i;
+            }
+        }
+
+        System.out.println(human);
+
+    }
+}
+
 
 
