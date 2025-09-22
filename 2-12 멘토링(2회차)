@@ -78,3 +78,67 @@ class Main {
         System.out.println(answer);
     }
 }
+
+
+2회차 풀이
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //반 학생수
+        int m = input.nextInt(); //수학테스트 횟수
+        int answer = 0; //짝의 수
+        
+
+
+        int[][] arr = new int[m][n]; //수학 테스트 정보
+
+        for (int i = 0; i <m; i++) {
+            for (int j = 0; j < n; j++) {
+                arr[i][j] = input.nextInt();
+            }
+        }
+
+        for (int i = 1; i <= n; i++) { //학생 전체 경의수 체크
+            for (int j = 1; j <= n; j++) {//1,2  1,3 등 4 * 4 모든 경우 체크
+                int count = 0; // 테스트 전부다 앞서는지 체크
+
+                for (int k = 0; k < m; k++) {
+                    int pi = 0; //등수 저장
+                    int pj = 0; //등수 저장
+
+                    for (int l = 0; l < n; l++) {
+
+
+                        if (arr[k][l] == i) {
+                            pi = l;
+                        }
+
+                        if (arr[k][l] == j) {
+                            pj = l;
+                        }
+                    }
+
+                    if (pi < pj) {
+                        count++;
+                    }
+                }
+
+                if (count == m) {
+                    answer++;
+                }
+
+
+            }
+        }
+
+        System.out.println(answer);
+
+    }
+}
+
