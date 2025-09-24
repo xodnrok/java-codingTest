@@ -124,3 +124,115 @@ class Main {
     }
 }
 
+
+2회차 풀이(투포인터 알고리즘 생각안하고 그냥 풀음)
+
+import java.util.*;
+import java.util.stream.IntStream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //첫 번째 배열 크기
+        int[] arr1 = new int[n]; //첫번째 배열
+
+        for (int i = 0; i < n; i++) {
+            arr1[i] = input.nextInt();
+        }
+
+        int m = input.nextInt();//두 번째 배열 크기
+        int[] arr2 = new int[m];//두번째 배열
+
+        for (int i = 0; i < m; i++) {
+            arr2[i] = input.nextInt();
+        }
+
+        int[] answer = new int[n + m];
+
+        for (int i = 0; i < n; i++) {
+            answer[i] = arr1[i];
+        }
+
+        for (int i = 0; i < m; i++) {
+            answer[n+i] = arr2[i];
+        }
+
+        int[] array = Arrays.stream(answer).sorted().toArray();
+
+        for (int i : array) {
+            System.out.print(i + " ");
+        }
+    }
+}
+
+
+2회차 풀이 투포인터 알고리즘 적용
+
+import java.util.*;
+import java.util.stream.IntStream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //첫 번째 배열 크기
+        int[] arr1 = new int[n]; //첫번째 배열
+
+        for (int i = 0; i < n; i++) {
+            arr1[i] = input.nextInt();
+        }
+
+        int m = input.nextInt();//두 번째 배열 크기
+        int[] arr2 = new int[m];//두번째 배열
+
+        for (int i = 0; i < m; i++) {
+            arr2[i] = input.nextInt();
+        }
+
+        int[] answer = new int[n + m];
+
+        int i = 0; //arr1 의 인덱스
+        int j = 0; //arr2 의 인덱스
+        int k = 0; //answer 의 인덱스
+
+        while (i < n && j < m) {
+
+            if (arr1[i] < arr2[j]) {
+                answer[k] = arr1[i];
+                i++;
+                k++;
+            } else if (arr1[i] > arr2[j]) {
+                answer[k] = arr2[j];
+                j++;
+                k++;
+            } else {
+                answer[k] = arr1[i];
+                i++;
+                k++;
+            }
+        }
+
+        while (j < m) {
+            answer[k] = arr2[j];
+            k++;
+            j++;
+        }
+
+        while (i < n) {
+            answer[k] = arr1[i];
+            k++;
+            i++;
+        }
+
+        for (int i1 : answer) {
+            System.out.print(i1 + " ");
+        }
+    }
+}
+
+
