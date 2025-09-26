@@ -66,3 +66,69 @@ class Main {
 
     }
 }
+
+
+2회차 풀이
+
+import java.util.*;
+import java.util.stream.IntStream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //총 매출 갯수
+        int k = input.nextInt(); //몇 일을 기준으로 할지
+
+        int[] arr = new int[n]; //매출 저장 배열
+
+        int answer = 0; //정답 값 저장
+        int sum = 0;
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        int lInx = 0; //왼쪽 포인터
+        int rInx = k; //오른쪽 포인터
+
+        for (int i = lInx; i < rInx; i++) { //처음 동작만 직접 계산해서 넣는다.
+            answer += arr[i];
+            sum += arr[i];
+        }
+
+        for (int i = rInx; i < n; i++) {
+            sum -= arr[lInx];
+            sum += arr[i];
+            answer = Math.max(answer, sum);
+            lInx++;
+        }
+
+        System.out.println(answer);
+
+
+
+
+
+
+//        while (rInx <= n) { 해당 방법으로 풀 시 타임에러
+//
+//            for (int i = lInx; i < rInx; i++) {
+//                sum += arr[i];
+//            }
+//            answer = Math.max(sum, answer);
+//            sum = 0;
+//            lInx++;
+//            rInx++;
+//
+//
+//        }
+
+
+//        System.out.println(answer);
+
+
+    }
+}
