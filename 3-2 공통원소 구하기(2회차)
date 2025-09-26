@@ -76,3 +76,62 @@ class Main {
         }
     }
 }
+
+
+2회차 풀이
+
+import java.util.*;
+import java.util.stream.IntStream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //첫번째 집합의 크기
+        int[] arr1 = new int[n]; //첫번째 배열
+
+        for (int i = 0; i < n; i++) {
+            arr1[i] = input.nextInt();
+        }
+
+        int m = input.nextInt(); //두번째 집합의 크기
+        int[] arr2 = new int[m]; //두번째 배열
+
+        for (int i = 0; i < m; i++) {
+            arr2[i] = input.nextInt();
+        }
+
+//        int[] array1 = Arrays.stream(arr1).sorted().toArray(); //첫번째 집합 배열 정렬
+//        int[] array2 = Arrays.stream(arr2).sorted().toArray(); //두번째 지합 배열 정렬
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+
+        int idxN = 0;//첫번째 집합 인덱스
+        int idxM = 0;//두번째 집합 인덱스
+
+        List<Integer> answer = new ArrayList<>(); //정답값 저장
+
+        while (idxM < m && idxN < n) {
+
+            if (arr1[idxN] == arr2[idxM]) {
+                answer.add(arr1[idxN]);
+                idxN++;
+                idxM++;
+            } else if (arr1[idxN] < arr2[idxM]) {
+                idxN++;
+            } else {
+                idxM++;
+            }
+        }
+
+
+
+        for (Integer i : answer) {
+            System.out.print(i + " ");
+        }
+
+    }
+}
+
