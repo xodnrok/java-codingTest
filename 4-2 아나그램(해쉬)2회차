@@ -112,3 +112,91 @@ class Main {
 
 
 
+2회차 equals 풀이 방법 , 2개의 맵을 사용
+
+import java.util.*;
+import java.util.stream.IntStream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String next1 = input.next(); //첫번째 문자열
+        String next2 = input.next(); //두번째 문자열
+
+        Map<Character, Integer> map1 = new HashMap<>(); //첫번째 문자열 갯수 체크
+        Map<Character, Integer> map2 = new HashMap<>(); //두번째 문자열 갯수 체크
+
+        for (int i = 0; i < next1.length(); i++) {
+            char c = next1.charAt(i);
+            map1.put(c, map1.getOrDefault(c, 0) + 1);
+        }
+
+        for (int i = 0; i < next2.length(); i++) {
+            char c = next2.charAt(i);
+            map2.put(c, map2.getOrDefault(c, 0) + 1);
+        }
+
+        boolean answer = map2.equals(map1);
+        if (answer) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+
+
+    }
+}
+
+
+equals 사용안하고 풀기 , 하나의 맵으로 풀이
+
+import java.util.*;
+import java.util.stream.IntStream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String next1 = input.next(); //첫번째 문자열
+        String next2 = input.next(); //두번째 문자열
+
+        Map<Character, Integer> map1 = new HashMap<>(); //첫번째 문자열 갯수 체크
+
+        for (int i = 0; i < next1.length(); i++) {
+            char c = next1.charAt(i);
+            map1.put(c, map1.getOrDefault(c, 0) + 1);
+        }
+
+        boolean b = true;
+
+        for (int i = 0; i < next2.length(); i++) {
+            if (!map1.containsKey(next2.charAt(i)) || map1.get(next2.charAt(i)) == 0) {
+                b = false;
+                break;
+            }
+            map1.put(next2.charAt(i), map1.get(next2.charAt(i)) - 1);
+        }
+
+        if (b) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+
+
+    }
+}
+
+
+
+
+
+
+
