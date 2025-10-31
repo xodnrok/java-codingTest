@@ -116,3 +116,44 @@ class Main {
     }
 }
 
+
+2회차 문제풀이
+
+
+import java.util.*;
+import java.util.stream.IntStream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt();
+
+        String person = input.next();
+
+        Map<Character, Integer> answer = new HashMap<>();
+
+        for (int i = 0; i < person.length(); i++) {
+            char c = person.charAt(i);
+            answer.put(c, answer.getOrDefault(c, 0) + 1);
+        }
+
+        int num = 0;
+        Character a = 'c';
+
+        Set<Character> keySet = answer.keySet();
+        for (Character c : keySet) {
+            Integer count = answer.get(c);
+            if (count > num) {
+                num = count;
+                a = c;
+            }
+        }
+
+        System.out.println(a);
+
+    }
+}
+
