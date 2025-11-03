@@ -140,3 +140,50 @@ class Main {
     }
 }
 
+
+2회차 풀이 
+
+import java.util.*;
+import java.util.stream.IntStream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //총 일수
+        int k = input.nextInt(); //몇 일 구간
+
+        int[] arr = new int[n]; //매출수 저장 배열
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        Map<Integer, Integer> map = new HashMap<>(); //매출 종류 저장 맵
+        List<Integer> list = new ArrayList<>();//정답 저장 리스트
+
+        for (int i = 0; i < k; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1); //첫번째 윈도우리스트 저장전 갯수 체크
+        }
+        list.add(map.size());
+
+        int lt = 0; //왼쪽 포인트로 슬라이싱 윈도우 움직이면서 빼기 위해서
+
+        for (int rt = k; rt < n; rt++) {
+            map.put(arr[rt], map.getOrDefault(arr[rt], 0) + 1); //첫번째 윈도우리스트 저장전 갯수 체크
+            map.put(arr[lt], map.get(arr[lt]) - 1);
+            if (map.get(arr[lt]) == 0) {
+                map.remove(arr[lt]);
+            }
+            lt++;
+            list.add(map.size());
+        }
+
+        for (Integer i : list) {
+            System.out.print(i + " ");
+        }
+    }
+}
+
