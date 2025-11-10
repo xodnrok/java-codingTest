@@ -104,3 +104,88 @@ class Main {
     }
 }
 
+
+2회차 풀이
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String request = input.next(); //질문 받기
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        char[] charArray = request.toCharArray(); //입력받은 문자 배열로 만들기
+
+        boolean b = true;
+
+        for (char c : charArray) {
+            if (c == '(') {
+                deque.push(c);
+            } else {
+                if (deque.isEmpty()) {
+                    b = false;
+                    break;
+                }
+                if (deque.peek() == '(') {
+                    deque.pop();
+                }
+            }
+        }
+
+        if (b && deque.isEmpty()) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+
+    }
+}
+
+
+2회차 런타임 에러 발생
+
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String request = input.next(); //질문 받기
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        char[] charArray = request.toCharArray(); //입력받은 문자 배열로 만들기
+
+
+        for (char c : charArray) {
+            if (c == ')' && deque.peek() == '(') {
+                deque.pop();
+            } else {
+                deque.push(c);
+            }
+        }
+
+        if (deque.isEmpty()) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+    }
+}
+
