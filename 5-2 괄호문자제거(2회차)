@@ -139,3 +139,48 @@ class Main {
     }
 }
 
+
+2회차 풀이
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String request = input.next(); //문자 입력받기
+
+        Deque<Character> deque = new ArrayDeque<>(); //스택 생성
+
+        char[] charArray = request.toCharArray();
+
+        for (char c : charArray) {
+            if (c == ')') {
+                while (deque.peek() != '(') {
+                    deque.pop();
+                }
+                deque.pop();
+            } else {
+                deque.push(c);
+            }
+        }
+
+        //해당 기능으로 풀었지만 채점 사이트에서 해당 메서드로 구현시 컴파일 에러 발생
+//        Deque<Character> answer = deque.reversed();
+//        for (Character c : answer) {
+//            System.out.print(c);
+//        }
+
+        int size = deque.size();
+        for (int i = 0; i < size; i++) {
+            System.out.print(deque.pollLast());
+        }
+    }
+}
+
+
