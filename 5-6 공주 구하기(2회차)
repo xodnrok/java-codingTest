@@ -119,3 +119,45 @@ class Main {
     }
 }
 
+
+2회차 풀이
+
+import java.sql.Array;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //왕자의 총 인원
+        int k = input.nextInt(); //제외되는 특정 번호
+
+        Deque<Integer> deque = new ArrayDeque<>(); // 큐 생성
+        int answer = 0;
+
+        for (int i = 1; i < n + 1; i++) {
+            deque.addLast(i); //큐에 값 넣기
+        }
+
+        while (!deque.isEmpty()) {
+
+            for (int i = 1; i < k; i++) { //특정 숫자를 외치는 왕자를 찾기
+                deque.addLast(deque.poll());
+            }
+            deque.poll(); //특정 숫자를 외친 왕자를 큐에서 제거
+
+            if (deque.size() == 1) {
+                answer = deque.poll(); //마지막 남은 왕자를 꺼내서 정답에 저장
+            }
+        }
+        System.out.println(answer);
+
+    }
+}
+
+
