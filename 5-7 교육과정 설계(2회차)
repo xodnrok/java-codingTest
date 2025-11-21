@@ -80,3 +80,53 @@ class Main {
     }
 }
 
+
+2회차 풀이
+
+import java.sql.Array;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String essential = input.next(); //필수 과목 순서 문자 받기
+        String request = input.next(); //사용자로 부터 수업설계 받기
+
+        Deque<Character> essentialDeque = new ArrayDeque<>(); //필수 과목 저장 큐
+        Deque<Character> deque = new ArrayDeque<>(); //사용자 수업계획 저장 큐
+
+        for (int i = 0; i < essential.length(); i++) {
+            essentialDeque.addLast(essential.charAt(i)); //필수 과목 저장큐 값 넣기
+        }
+
+        for (int i = 0; i < request.length(); i++) {
+            deque.addLast(request.charAt(i)); //사용자 수업설계 저장큐 값 넣기
+        }
+
+        while (!deque.isEmpty()) {
+            Character c = deque.pollFirst(); //수업계획 값 꺼내기
+            if (essentialDeque.contains(c) && essentialDeque.peek() == c) { //필수 과목 순서가 맞으므로 필수과목 제거
+                essentialDeque.pollFirst();
+            } else if (essentialDeque.contains(c) && essentialDeque.peek() != c) { //필수 과목 순서가 안맞으므로 바로 반복문 종료
+                break;
+            }
+        }
+
+        if (essentialDeque.isEmpty()) { // 필수과목 저장 큐가 비었을경우 제대로 된 수업설계
+            System.out.println("YES");
+        } else { //필수과목 저장 큐가 안비었으므로 제대로 된 수업설계가 아니다.
+            System.out.println("NO");
+        }
+
+
+
+    }
+}
+
+
