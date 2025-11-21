@@ -116,6 +116,76 @@ class Main {
     }
 }
 
+2회차풀이
+
+
+import java.sql.Array;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //환자의 총 인원
+        int m = input.nextInt(); //몇 번째 환자를 선택할지
+
+
+        Deque<Person> deque = new ArrayDeque<>();
+
+        int count = 0; //특정환자가 몇 번만에 진료를 받는지
+
+        for (int i = 0; i < n; i++) {
+            deque.addLast(new Person(i, input.nextInt())); //환자(위험도) 큐에 저장
+        }
+
+        while (!deque.isEmpty()) { //큐가 빌때까지 동작
+            boolean b = true; //환자 진료를 받는지
+            Person person = deque.pollFirst(); //환자(위험도) 꺼내기
+
+            for (Person p : deque) {
+                if (person.getNum() < p.getNum()) { //더 위급한 환자가 있으면 꺼낸 환자를 다시 큐에 넣는다.
+                    deque.addLast(person);
+                    b = false;
+                    break;
+                }
+            }
+            if (b) { //진료받는것이 확정 이후 특정환자가 맞는지 체크
+                count++;
+                if (person.getId() == m) {
+                    System.out.println(count);
+                    break;
+                }
+            }
+
+        }
+
+
+    }
+}
+
+class Person {
+    private int id;
+    private int num;
+
+    public Person(int id, int num) {
+        this.id = id;
+        this.num = num;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getNum() {
+        return num;
+    }
+}
+
 
 
 
