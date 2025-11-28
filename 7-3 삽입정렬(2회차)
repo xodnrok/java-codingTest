@@ -58,3 +58,49 @@ class Main {
         }
     }
 }
+
+2회차 풀이
+
+import java.sql.Array;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt(); //총 몇개의 숫자를 받을지
+
+        int[] arr = new int[n]; //숫자를 저장할 배열
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        for (int i = 1; i < n; i++) { //총 반복 횟수
+
+            int temp = arr[i]; //기준 배열 값 저장
+            int j;
+            for (j = i - 1; j >= 0; j--) {
+
+                if (arr[j] > temp) {
+                    arr[j + 1] = arr[j];
+                } else {
+                    break;
+                }
+            }
+
+            arr[j + 1] = temp;
+
+        }
+        for (int i : arr) {
+            System.out.printf(i + " ");
+        }
+
+    }
+
+}
+
