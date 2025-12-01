@@ -91,6 +91,45 @@ class Main {
 }
 
 
+2회차 풀이
+
+import java.sql.Array;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int s = input.nextInt(); //캐시의 크기
+        int n = input.nextInt(); //작업의 갯수
+
+        List<Integer> list = new ArrayList<>(s);//캐시생성
+
+        for (int i = 0; i < n; i++) { //작업의 갯수만큼 반복
+            int job = input.nextInt(); //작업번호
+
+            if (list.contains(job)) {
+                list.remove((Integer) job);
+                list.add(0,job);
+            } else if (list.size() == s) {
+                list.remove(s-1);
+                list.add(0,job);
+            } else {
+                list.add(0,job);
+            }
+        }
+
+        for (Integer i : list) {
+            System.out.print(i + " ");
+        }
+    }
+
+}
 
 
 
