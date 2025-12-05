@@ -66,6 +66,43 @@ class Main {
     }
 }
 
+2회차풀이
+
+import java.sql.Array;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt(); //학생수
+
+        Map<Integer, Integer> map = new HashMap<>();
+        boolean b = true;
+        for (int i = 0; i < n; i++) {
+            int request = input.nextInt();
+            if (map.containsKey(request)) {
+                b = false;
+                System.out.println("D");
+                break;
+            } else {
+                map.put(request, i);
+            }
+        }
+
+        if (b) {
+            System.out.println("U");
+        }
+
+    }
+
+}
+
+
 
 
 
