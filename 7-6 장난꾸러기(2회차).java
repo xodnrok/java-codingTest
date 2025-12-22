@@ -115,7 +115,7 @@ class Main {
 
 2회차 풀이
 
-리스트를 사용용
+리스트를 사용
 
 import java.util.*;
 import java.util.stream.Collectors;
