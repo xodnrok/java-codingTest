@@ -113,6 +113,123 @@ class Main {
     }
 }
 
+2회차 풀이
+
+리스트를 사용용
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //총 학생수
+
+        List<Integer> list = new ArrayList<>(n); //원본 학생 순서
+
+        int answer1 = 0; //철수 번호
+        int answer2 = 0; //짝궁 번호
+
+        for (int i = 0; i < n; i++) {
+            list.add(input.nextInt());
+        }
+
+        List<Integer> sortList = new ArrayList<>(list);
+        Collections.sort(sortList);
+
+        int count = 0;
+
+//        형변환
+//        for (int i = 0; i < n; i++) {
+//            if ((int) list.get(i) !=(int) sortList.get(i)) {
+//                answer1 = i + 1;
+//                count = i;
+//                break;
+//            }
+//        }
+//
+//        for (int i = count+1; i < n; i++) {
+//            if ((int)list.get(i) != (int)sortList.get(i)) {
+//                answer2 = i + 1;
+//                break;
+//            }
+//        }
+
+
+//        equals 사용
+        for (int i = 0; i < n; i++) {
+            if (!list.get(i).equals(sortList.get(i))) {
+                answer1 = i + 1;
+                count = i;
+                break;
+            }
+        }
+
+        for (int i = count+1; i < n; i++) {
+            if (!list.get(i).equals(sortList.get(i))) {
+                answer2 = i + 1;
+                break;
+            }
+        }
+
+
+        System.out.println(answer1 + " " + answer2);
+
+
+
+
+    }
+
+}
+
+
+배열을 사용
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //총 학생수
+
+        int[] arr1 = new int[n];
+        int[] arr2 = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr1[i] = input.nextInt();
+        }
+
+        for (int i = 0; i < n; i++) {
+            arr2[i] = arr1[i];
+        }
+
+        Arrays.sort(arr2);
+        List<Integer> answer = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+
+            if (arr1[i] != arr2[i]) {
+                answer.add(i + 1);
+            }
+        }
+
+        for (Integer i : answer) {
+            System.out.print(i + " ");
+        }
+    }
+
+}
 
 
 
