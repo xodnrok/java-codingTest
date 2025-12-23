@@ -75,6 +75,57 @@ class Main {
 
 }
 
+2회차 풀이
+
+    import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+//Comparable 에서 제네릭은 내가 누구와 비교 할지
+class Point implements Comparable<Point>{
+
+    int x, y;
+
+    @Override
+    public int compareTo(Point o) { //this.x 가 항상 들어온 o.x , o.y보다 작다고 생각하기
+        if (this.x == o.x) {
+            return this.y - o.y;  
+        } else {
+            return this.x - o.x;  //this.x - o.x 는 this.x 가 더 작으므로 오름차순
+        }
+    }
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); // 좌표 개수 입력
+
+        List<Point> list = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            list.add(new Point(input.nextInt(), input.nextInt()));
+        }
+        Collections.sort(list);
+
+        for (Point point : list) {
+            System.out.println(point.x + " " + point.y);
+        }
+
+
+    }
+
+}
+
 
 
 
