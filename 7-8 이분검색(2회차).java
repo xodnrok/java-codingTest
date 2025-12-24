@@ -65,6 +65,53 @@ class Main {
 
 }
 
+2회차
+
+    import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //총 몇개의 숫자를 입력 받을지
+        int m = input.nextInt(); //어떤 숫자를 찾을지
+
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        int lt = 0; //왼쪽 포인터
+        int rt = arr.length-1; //오른쪽 포인터
+
+        Arrays.sort(arr);
+
+        while (lt <= rt) {
+            int mid = (lt + rt) / 2; //중앙값
+
+            if (arr[mid] < m) {
+                lt = mid + 1;
+            } else if (arr[mid] > m) {
+                rt = mid - 1;
+            } else {
+                System.out.println(mid + 1);
+                break;
+            }
+        }
+
+
+    }
+
+}
+
+
+
 
 
 
