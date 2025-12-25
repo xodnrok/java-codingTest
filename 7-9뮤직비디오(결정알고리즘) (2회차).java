@@ -179,8 +179,6 @@ class Main {
 }
 
 
-2회차 정답
-
 import java.util.*;
 
 import java.util.stream.Collectors;
@@ -189,70 +187,76 @@ import java.util.stream.Stream;
 
 class Main {
 
-    static int lt;
-    static int rt;
-    static int n;
-    static int m;
+    static int n , m, lt, rt , max; //max 는 lt 에는 배열에서 최댓값을 줘야한다.
+                                    //각자 하나로 담는 경우가 있기 때문이다.
 
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
 
-        n = input.nextInt();//총 몇개의 곡인지
+        n = input.nextInt(); //곡의 갯수
+        m = input.nextInt();//몇 개의 dvd 로 곡을 담을지
 
-        m = input.nextInt();//몇 개의 디스크로 곡을 담을지
+        int[] arr = new int[n]; //음반 저장 배열
 
-        int[] arr = new int[n]; //곡 담을 배열
+        int sum = 0; //배열의 총합
 
-        int sum = 0;
-        int max = 0;
         for (int i = 0; i < n; i++) {
-
             arr[i] = input.nextInt();
-            max = Math.max(max, arr[i]);
             sum += arr[i];
-
+            max = Math.max(arr[i], max); //최댓값 찾기
         }
 
-        lt = max;
-        rt = sum;
+        lt = max; //최소 왼쪽 포인터
+        rt = sum; //최대 오른쪽 포인터
 
         solution(arr, m);
-    }
 
+    }
 
     private static void solution(int[] arr, int m) {
 
-        int answer = 0;
+        int answer = 0; //정답 디스크 크기 저장
 
         while (lt <= rt) {
 
-            int sum = 0; // 음반 합 더하기
-            int count = 1; //디스크 사용 횟수
-
-            int mid = (lt + rt) / 2; //중앙값 찾기 (디스크 크기)
+            int mid = (lt + rt) / 2; //중앙값이 dvd 의 크기를 나타낸다
+            int sum = 0;  //곡 들의 합을 구하기 위한 변수
+            int count = 1; //1인 이유는 내가 dvd 를 가지고 있어야 음반을 담을 수 있기 때문
 
             for (int i = 0; i < n; i++) {
-                if (sum + arr[i] > mid) {
-                    sum = arr[i];
+//                이것도 하나의 방법
+//                sum += arr[i]; // 일단 담기
+//                if (sum > mid) { // 담고 나서 확인
+//                    sum = arr[i]; // 방금 담은 것만 새 박스에 남기기
+//                    count++;
+//                }
+
+                if (sum + arr[i] > mid) { //용량보다 더 커져서 넘칠경우
+                    sum = arr[i]; //기존에 넘친값 다시 저장
                     count++;
                 } else {
                     sum += arr[i];
                 }
+
             }
 
-            if (count <= m) {
+            if (count == m) { //사용 횟수가 원하는 요청값과 같지만 더 최적화 가능한지 체크
                 answer = mid;
+                rt = mid - 1; //그래서 줄인다.
+            } else if (count < m) { //왜 카운트가 m보다 작을때도 answer 에 저장하냐면
+                                    //예시로 100용량의 dvd 가 하나로 다담는다면 이때 이 if 문이 동작하고 그 말은
+                answer = mid;       //하나로도 다 담았지만 일부로 100용량의 dvd 를 3개써서 해도 통과가 되기 때문이다.
                 rt = mid - 1;
-            } else {
+            } else if (count > m) {
                 lt = mid + 1;
             }
+
         }
         System.out.println(answer);
 
     }
 
 }
-
 
 
