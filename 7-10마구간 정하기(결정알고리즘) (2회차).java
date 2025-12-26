@@ -88,4 +88,65 @@ class Main {
     }
 }
 
+2회차 문제풀이
+
+import java.util.*;
+
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //몇개의 마구간이 있는지
+        int c = input.nextInt(); //몇개의 말을 배치할지
+
+        int[] arr = new int[n]; //마구간 저장 배열
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        Arrays.sort(arr); //결정 알고리즘을 위해 정렬
+
+        int lt = 1; //최소
+        int rt = arr[n - 1] - arr[0]; //최대
+        int answer = 0; //정답값 저장
+
+        while (lt <= rt) {
+
+            int mid = (lt + rt) / 2; //말의 최대거리 임의 지정
+            int count = 1; //말 저장 횟수 처음말 저장 해야하기 때문에 1로시작한다
+            int eq = arr[0]; //말 처음 배치 위치
+
+
+            for (int i = 1; i < n; i++) {
+                if (arr[i] - eq >= mid) { //여러말을 배치할때 하나의 거리만이라도 임의의 거리(mid)값과
+                                          //일치하면 되고 나머지는 임의의 거리보다 크면 되기 때문이다.
+                    eq = arr[i];
+                    count++;
+                }
+            }
+
+            if (count == c) { //최댓값을 찾기 때문에 lt = mid+1 한다
+                answer = mid;
+                lt = mid + 1;
+            } else if (count < c) {
+                rt = mid - 1;
+            } else if(count > c){
+                answer = mid;
+                lt = mid + 1;
+            }
+
+        }
+        System.out.println(answer);
+    }
+
+}
+
+
 
