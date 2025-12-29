@@ -39,3 +39,35 @@ class Main {
 
 
 }
+
+
+2회차 풀이
+
+import java.util.*;
+
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+    static int n;
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        n = input.nextInt(); //사용자가 입력한 값
+
+        DFS(1);
+    }
+
+    private static void DFS(int num) {
+        if (num == n) { //입력한 값과 같으면 입력한 숫자 출력하고 종료
+            System.out.print(num);
+        } else { //입력한 값과 다르다면 그 값을 출력하고 다시 DFS 메서드에 +1해서 넘긴다.
+            System.out.print(num + " ");
+            DFS(num+1);
+        }
+    }
+
+}
