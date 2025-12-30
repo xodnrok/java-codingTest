@@ -33,3 +33,49 @@ class Main {
     }
 }
 
+2회차 풀이
+
+import java.util.*;
+
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+
+
+        DFS(n);
+
+    }
+
+    private static void DFS(int n) {
+        if (n == 0) {
+            return;
+        } else {
+            int num2 = n / 2;
+            DFS(num2);
+
+            int num1 = n % 2;
+            System.out.print(num1);
+
+        }
+    }
+
+
+}
+//11 를 2로 나누면
+//몫은 5 나머지 1
+
+//5 를 2로 나누면
+//몫은 2 나머지는 1
+
+//2를 2로 나누면
+//몫은 1 나머지는 0
+
+//1을 2로 나누면
+//몫은 0 나머지는 1
