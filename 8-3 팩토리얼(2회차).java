@@ -69,3 +69,36 @@ class Main {
 
 }
 
+2회차 정답 풀이
+
+import java.util.*;
+
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+
+        DFS(n);
+    }
+
+    private static int DFS(int n) {
+
+        if (n == 1) {
+            return 1;
+        } else {
+            return n * DFS(n - 1);
+        }
+    }
+
+}
+//5 * DFS(4) -- DFS(5)
+//4 * DFS(3) -- DFS(4)
+//3 * DFS(2) -- DFS(3)
+//2 * DFS(1) -- DFS(2)
+// 1         -- DFS(1)
