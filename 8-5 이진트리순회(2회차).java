@@ -50,3 +50,50 @@ class Main {
         }
     }
 }
+
+2회차 문제풀이
+
+import java.util.*;
+
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Node {
+
+    int data; //내가 가지고 있는 값
+    Node lt; //왼쪽 값
+    Node rt; //오른쪽 주소
+
+    public Node(int data, Node lt, Node rt) {
+        this.data = data;
+        this.lt = lt;
+        this.rt = rt;
+    }
+
+    public Node(int data) {
+        this.data = data;
+    }
+}
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Node node = new Node(1,  //실제 루트 값
+                new Node(2, new Node(4), new Node(5)),  //lt 에 대한 생성자
+                new Node(3, new Node(6), new Node(7))); //rt에 대한 생성자
+
+        DFS(node);
+    }
+
+    private static void DFS(Node node) {
+        if (node == null) {
+            return;
+        }
+        DFS(node.lt);
+        DFS(node.rt);
+        System.out.print(node.data);
+    }
+}
