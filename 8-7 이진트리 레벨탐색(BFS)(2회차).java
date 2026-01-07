@@ -64,3 +64,65 @@ class Main {
         }
     }
 }
+
+2회차 풀이
+
+import java.util.*;
+
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Node {
+
+    int data;
+    Node lt;
+    Node rt;
+
+    public Node(int data) {
+        this.data = data;
+        lt = rt = null;
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Node node = new Node(1);
+        node.lt = new Node(2);
+        node.rt = new Node(3);
+
+        node.lt.lt = new Node(4);
+        node.lt.rt = new Node(5);
+
+        node.rt.lt = new Node(6);
+        node.rt.rt = new Node(7);
+
+        BFS(node);
+    }
+
+    private static void BFS(Node node) {
+
+        Deque<Node> deque = new ArrayDeque<>();
+        deque.addLast(node);
+
+        while (!deque.isEmpty()) {
+
+            Node poll = deque.pollFirst();
+            System.out.print(poll.data + " ");
+
+            if (poll.lt != null) {
+                deque.addLast(poll.lt);
+            }
+
+            if (poll.rt != null) {
+                deque.addLast(poll.rt);
+            }
+
+        }
+
+
+    }
+
+}
