@@ -82,6 +82,41 @@ class Main {
     }
 }
 
+3회차 코드
+    
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int count = 0; //정답 갯수
+
+        String next = input.next(); //입력받을 문자
+
+        String answer = input.next(); //찾을 문자
+
+        String upperCase = next.toUpperCase(); //입력받은 문자 대문자
+        char answerChar = answer.toUpperCase().charAt(0);//찾을 문자 대문자
+
+        char[] charArray = upperCase.toCharArray(); //입력받은 문자 문자배열로 만듬
+
+        for (char c : charArray) {
+            if (c == answerChar) {
+                count++;
+            }
+        }
+
+        System.out.println(count);
+
+    }
+
+}
+
+
 
 
 
