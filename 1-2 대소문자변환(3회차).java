@@ -81,6 +81,38 @@ class Main {
     }
 }
 
+3회차
+    
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String next = input.next(); //문자열 입력받기
+
+        String[] split = next.split(""); //문자열 배열로
+
+        StringBuilder answer = new StringBuilder(); //정답 저장
+
+        for (String s : split) {
+            if (s.equals(s.toUpperCase())) {
+                answer.append(s.toLowerCase());
+            } else {
+                answer.append(s.toUpperCase());
+            }
+        }
+
+        System.out.println(answer);
+
+
+    }
+
+}
+
 
 
 
