@@ -41,3 +41,36 @@ class Main {
     }
 
 }
+
+3회차 코드
+
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String[] request = input.nextLine().split(" ");
+
+        StringBuilder sb = null;
+
+        int len = 0;
+
+        for (String s : request) {
+            if (s.length() > len) {
+                len = s.length();
+                sb = new StringBuilder(s);
+            }
+        }
+
+        System.out.println(sb);
+
+    }
+
+}
+
+
+
