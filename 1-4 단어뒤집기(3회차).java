@@ -107,5 +107,34 @@ class Main {
 }
 
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int num = input.nextInt(); //입력받을 갯수
+
+        List<String> list = new ArrayList<>();
+
+        for (int i = 0; i < num; i++) {
+            list.add(input.next());
+        }
+
+        for (String s : list) {
+            System.out.println(new StringBuilder(s).reverse());
+        }
+
+    }
+
+}
+
+
+
 
 
