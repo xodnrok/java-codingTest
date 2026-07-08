@@ -125,6 +125,68 @@ class Main {
 
 
     }
+
+
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String[] saveList = input.next().split("");
+
+        List<String> list = new ArrayList<>(Arrays.asList(saveList));
+
+
+        int left = 0; //좌측 시작점
+        int right = saveList.length - 1; //우측 시작점
+        StringBuilder sb = null; //temp 값 저장
+
+        while (left < right) {
+
+            //둘다 알파벳일 경우
+            if (Character.isAlphabetic(list.get(left).charAt(0)) && Character.isAlphabetic(list.get(right).charAt(0))) {
+
+                sb = new StringBuilder(list.get(right));
+
+                list.set(right, list.get(left));
+                list.set(left, sb.toString());
+
+                left++;
+                right--;
+
+                //둘다 알파벳이 아닌경우
+            } else if (!Character.isAlphabetic(list.get(left).charAt(0)) && !Character.isAlphabetic(list.get(right).charAt(0))) {
+
+                left++;
+                right--;
+
+                //왼쪽이 알파벳이 아닌 경우
+            } else if (!Character.isAlphabetic(list.get(left).charAt(0))) {
+                left++;
+
+                //오른쪽이 알파벳이 아닌 경우
+            } else if (!Character.isAlphabetic(list.get(right).charAt(0))) {
+                right--;
+            }
+
+        }
+
+        for (String s : list) {
+            System.out.print(s);
+        }
+
+
+    }
+
+}
+
+
 }
 
 
