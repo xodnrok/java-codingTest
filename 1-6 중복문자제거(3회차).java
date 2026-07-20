@@ -95,5 +95,39 @@ class Main {
 }
 
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String str = input.next();
+
+        String[] split = str.split("");
+
+        List<String> answer = new ArrayList<>();
+
+        for (String s : split) {
+
+            if (!answer.contains(s)) {
+                answer.add(s);
+            }
+        }
+
+        for (String s : answer) {
+            System.out.print(s);
+        }
+
+    }
+
+}
+
+
+
 
 
