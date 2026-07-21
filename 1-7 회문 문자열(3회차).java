@@ -83,3 +83,46 @@ class Main {
 }
 
 
+3회차 풀이
+    
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String request = input.next().toUpperCase();
+
+        int lt = 0;
+        int rt = request.length() - 1;
+
+        boolean answer = true;
+
+        char[] charArray = request.toCharArray();
+
+        while (lt < rt) {
+
+            if (charArray[lt] != charArray[rt]) {
+                answer = false;
+                System.out.println("NO");
+                break;
+            } else {
+                lt++;
+                rt--;
+            }
+
+        }
+
+        if (answer) {
+            System.out.println("YES");
+        }
+
+    }
+
+}
+
+
+
