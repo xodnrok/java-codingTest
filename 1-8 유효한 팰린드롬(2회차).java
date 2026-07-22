@@ -99,6 +99,75 @@ class Main {
 
 
 
+3회차 풀이
+
+replaceall 사용안함
+    
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+
+        Scanner input = new Scanner(System.in);
+        String str = input.nextLine().toUpperCase();
+
+        char[] charArray = str.toCharArray();
+
+        StringBuilder sb1 = new StringBuilder();
+
+        for (char c : charArray) {
+            if (Character.isAlphabetic(c)) {
+                sb1.append(c);
+            }
+        }
+
+        StringBuilder sb2 = new StringBuilder(sb1).reverse();
+
+        if (sb1.toString().equals(sb2.toString())) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+    }
+
+}
+
+replaceAll 사용 
+
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+        
+        
+        Scanner input = new Scanner(System.in);
+        String str = input.nextLine().toUpperCase();
+
+        String request = str.replaceAll("[^A-Z]", "");
+
+
+        String s1 = request.trim();
+
+        StringBuilder s2 = new StringBuilder(s1).reverse();
+
+        if (s1.equals(s2.toString())) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+    }
+
+}
+
+
+
 
 
 
