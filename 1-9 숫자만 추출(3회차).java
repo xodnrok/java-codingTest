@@ -62,4 +62,30 @@ class Main {
 }
 
 
+3회차 문제풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+
+        Scanner input = new Scanner(System.in);
+
+        String str = input.next().replaceAll("[^0-9]", "").trim();
+
+        int answer = Integer.parseInt(str);
+
+        System.out.println(answer);
+
+
+    }
+
+}
+
+
 
