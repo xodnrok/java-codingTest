@@ -88,6 +88,53 @@ class Main {
     }
 }
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+
+        Scanner input = new Scanner(System.in);
+
+        String[] arr = input.next().split("");
+
+        List<String> answer = new ArrayList<>();
+
+        answer.add(arr[0]);
+
+        int count = 1;
+
+        for (int i = 1; i < arr.length; i++) {
+
+            if (arr[i].equals(arr[i - 1])) {
+                count++;
+                if (i == arr.length - 1) {
+                    answer.add(String.valueOf(count));
+                }
+            } else if (!arr[i].equals(arr[i - 1])) {
+                if (count != 1) {
+                    answer.add(String.valueOf(count));
+                    count = 1;
+                }
+                answer.add(arr[i]);
+            }
+        }
+
+        for (String s : answer) {
+            System.out.print(s + "");
+        }
+
+
+    }
+
+}
+
 
 
 
