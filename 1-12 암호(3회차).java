@@ -122,5 +122,59 @@ class Main {
     }
 }
 
+3회차 풀이
+
+ import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+
+        Scanner input = new Scanner(System.in);
+
+        int num = input.nextInt(); //몇개의 문자
+        int count = 0;
+
+        StringBuilder next = new StringBuilder(input.next()); //문자 입력
+
+        StringBuilder request; //하나의 단어 저장
+
+        List<Character> list = new ArrayList<>();
+
+        while (count < num) {
+
+            request = new StringBuilder();
+
+            for (int i = 0; i < 7; i++) {
+
+                if (next.charAt(i) == '#') {
+                    request.append("1");
+                } else {
+                    request.append("0");
+                }
+            }
+
+            char c = (char) Integer.parseInt(request.toString(), 2);
+            list.add(c);
+
+            next.replace(0, 7, "");
+            count++;
+
+        }
+
+        for (Character c : list) {
+            System.out.print(c);
+        }
+
+
+    }
+
+}
+
+
 
 
