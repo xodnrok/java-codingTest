@@ -130,6 +130,46 @@ class Main {
 }
 
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt();
+
+        int[] arr = new int[n + 1];
+
+        for (int i = 1; i < n + 1; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        List<Integer> answer = new ArrayList<>();
+
+        for (int i = 1; i < n + 1; i++) {
+
+            if (arr[i] > arr[i - 1]) {
+                answer.add(arr[i]);
+            }
+        }
+
+        for (Integer i : answer) {
+            System.out.print(i + " ");
+        }
+
+
+    }
+
+}
+
 
 
 
