@@ -134,5 +134,61 @@ class Main {
     }
 }
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int count = input.nextInt();
+
+
+        int[] a = new int[count];
+        int[] b = new int[count];
+        char[] answer = new char[count];
+
+        for (int i = 0; i < count; i++) {
+            a[i] = input.nextInt();
+        }
+
+        for (int i = 0; i < count; i++) {
+            b[i] = input.nextInt();
+        }
+
+        for (int i = 0; i < count; i++) {
+
+            if (a[i] == 1 && b[i] == 3) {
+                answer[i] = 'A';
+            } else if (a[i] == 2 && b[i] == 1) {
+                answer[i] = 'A';
+            } else if (a[i] == 3 && b[i] == 2) {
+                answer[i] = 'A';
+            } else if (b[i] == 1 && a[i] == 3) {
+                answer[i] = 'B';
+            } else if (b[i] == 2 && a[i] == 1) {
+                answer[i] = 'B';
+            } else if (b[i] == 3 && a[i] == 2) {
+                answer[i] = 'B';
+            } else {
+                answer[i] = 'D';
+            }
+        }
+
+        for (char c : answer) {
+            System.out.println(c);
+        }
+
+
+    }
+
+}
+
 
 
