@@ -148,4 +148,45 @@ class Main {
 }
 
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int num = input.nextInt();
+
+        int count = 0;
+
+        int[] arr = new int[num + 1];
+
+
+        for (int i = 2; i < num + 1; i++) {
+
+            if (arr[i] != 1) {
+                count++;
+            }
+
+            for (int j = i; j < num + 1; j += i) {
+
+                arr[j] = 1;
+
+            }
+
+        }
+
+        System.out.println(count);
+
+    }
+
+}
+
+
 
