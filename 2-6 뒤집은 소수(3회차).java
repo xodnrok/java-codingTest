@@ -112,5 +112,60 @@ class Main {
     }
 }
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int num = input.nextInt();
+
+        int[] arr = new int[num];
+        boolean check;
+
+        List<Integer> answer = new ArrayList<>();
+
+        for (int i = 0; i < num; i++) {
+            StringBuilder number = new StringBuilder(input.next()).reverse();
+            arr[i] = Integer.parseInt(String.valueOf(number));
+        }
+
+        for (int i = 0; i < num; i++) {
+
+            check = true;
+
+            for (int j = 2; j <= arr[i] / 2; j++) {
+                if (arr[i] % j == 0) {
+                    check = false;
+                    break;
+                }
+            }
+
+            if (check) {
+                if (arr[i] != 1) {
+                    answer.add(arr[i]);
+                }
+            }
+
+        }
+
+        for (int i = 0; i < answer.size(); i++) {
+            if (i == answer.size() - 1) {
+                System.out.print(answer.get(i)); // 마지막 요소는 공백 없이 출력
+            } else {
+                System.out.print(answer.get(i) + " "); // 그 외에는 공백 포함 출력
+            }
+        }
+    }
+}
+
+
 
 
