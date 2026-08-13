@@ -144,6 +144,43 @@ class Main {
 }
 
 
+3회차 풀이
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int num = input.nextInt();
+        int[] arr1 = new int[num + 1]; //점수 입력값
+        int count = 0; //1연속 횟수 체크
+        int sum = 0;
+
+        for (int i = 1; i < num + 1; i++) {
+            arr1[i] = input.nextInt();
+        }
+
+        for (int i = 1; i < num + 1; i++) {
+
+            if (arr1[i] == 1 && arr1[i] != arr1[i-1] ) {
+                count = 1;
+                sum += arr1[i];
+            } else if (arr1[i] == 1 && arr1[i - 1] == 1) {
+                count++;
+                sum += count;
+            } else if (arr1[i] == 0) {
+                count = 0;
+            }
+        }
+
+        System.out.println(sum);
+
+
+    }
+}
 
 
 
