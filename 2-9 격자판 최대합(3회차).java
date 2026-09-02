@@ -184,4 +184,84 @@ class Main {
 }
 
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int num = input.nextInt();
+        int max = 0; // 최대합
+        int sum; // 합계산
+        int[][] arr = new int[num][num];
+
+        for (int i = 0; i < num; i++) {      //각 행으로 계산
+
+            sum = 0;
+
+            for (int j = 0; j < num; j++) {
+                arr[i][j] = input.nextInt();
+                sum += arr[i][j];
+            }
+            if (sum > max) {
+                max = sum;
+            }
+        }
+
+
+        for (int i = 0; i < num; i++) {         //각 열로 계산
+
+            sum = 0;
+
+            for (int j = 0; j < num; j++) {
+
+                sum += arr[j][i];
+
+            }
+
+            if (sum > max) {
+                max = sum;
+            }
+        }
+
+        sum = 0;
+
+        for (int i = 0; i < num; i++) {         //왼쪽 대각선으로 계산
+
+            sum += arr[i][i];
+
+        }
+
+        if (sum > max) {
+            max = sum;
+        }
+
+        sum = 0;
+
+        for (int i = num - 1; i >= 0; i--) {         //오른쪽 대각선으로 계산
+
+            sum += arr[i][i];
+
+        }
+
+        if (sum > max) {
+            max = sum;
+        }
+
+        System.out.println(max);
+
+
+    }
+}
+
+
+
+
 
