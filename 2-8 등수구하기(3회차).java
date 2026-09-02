@@ -91,5 +91,51 @@ class Main {
     }
 }
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int num = input.nextInt();
+        int[] arr = new int[num];
+
+        for (int i = 0; i < num; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        List<Integer> answer = new ArrayList<>();
+
+        for (int i = 0; i < num; i++) {
+
+            int count = 1;
+
+            for (int j = 0; j < num; j++) {
+
+                if (arr[i] < arr[j]) {
+                    count++;
+                }
+            } 
+
+            answer.add(count);
+        }
+
+        for (Integer i : answer) {
+            System.out.print(i + " ");
+        }
+
+
+    }
+}
+
+
+
 
 
