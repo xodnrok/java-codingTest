@@ -236,3 +236,83 @@ class Main {
 }
 
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int num1 = input.nextInt();
+        int[] arr1 = new int[num1];
+
+        for (int i = 0; i < num1; i++) {
+            arr1[i] = input.nextInt();
+        }
+
+        int num2 = input.nextInt();
+        int[] arr2 = new int[num2];
+
+        for (int i = 0; i < num2; i++) {
+            arr2[i] = input.nextInt();
+        }
+
+        List<Integer> answer = new ArrayList<>();
+
+        int up = 0;
+        int down = 0;
+
+        boolean upCheck = false;
+        boolean downCheck = false;
+
+        for (int i = 0; i < num1 + num2; i++) {
+
+            if (arr1[up] < arr2[down]) { //윗배열이 아랫배열보다 작을때
+                answer.add(arr1[up]);
+                up++;
+            } else if (arr1[up] > arr2[down]) { //윗배열이 아랫배열보다 클때
+                answer.add(arr2[down]);
+                down++;
+            } else {                        //서로 같을때
+                answer.add(arr1[up]);
+                up++;
+            }
+
+            if (up == num1) {       //윗배열이 다 조사했을때
+                upCheck = true;
+                break;
+            } else if (down == num2) { //아랫배열이 다 조사했을때
+                downCheck = true;
+                break;
+            }
+
+        }
+
+        if (upCheck) {
+            for (int i = down; i < num2; i++) {
+                answer.add(arr2[i]);
+            }
+        }
+
+        if (downCheck) {
+            for (int i = up; i < num1; i++) {
+                answer.add(arr1[i]);
+            }
+        }
+
+        for (Integer i : answer) {
+            System.out.print(i + " ");
+        }
+
+
+    }
+}
+
+
+
