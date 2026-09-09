@@ -135,3 +135,69 @@ class Main {
     }
 }
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int num1 = input.nextInt();
+        int[] arr1 = new int[num1];
+
+        for (int i = 0; i < num1; i++) {
+            arr1[i] = input.nextInt();
+        }
+
+        Arrays.sort(arr1);
+
+        int num2 = input.nextInt();
+        int[] arr2 = new int[num2];
+
+        for (int i = 0; i < num2; i++) {
+            arr2[i] = input.nextInt();
+        }
+
+        Arrays.sort(arr2);
+
+        int up = 0;
+        int down = 0;
+
+        List<Integer> answer = new ArrayList<>();
+
+        while (up < num1 && down < num2) {
+
+            if (arr1[up] == arr2[down]) {
+                answer.add(arr1[up]);
+                up++;
+                down++;
+            } else if (arr1[up] < arr2[down]) {
+                up++;
+            } else if (arr1[up] > arr2[down]) {
+                down++;
+            }
+        }
+
+        for (int i = 0; i < answer.size(); i++) {
+
+            if (i == answer.size() - 1) {
+                System.out.print(answer.get(i));
+            } else {
+                System.out.print(answer.get(i) + " ");
+            }
+        }
+
+
+
+        // 1 2 3 5 9
+        // 2 3 5 7 8
+    }
+}
+
+
