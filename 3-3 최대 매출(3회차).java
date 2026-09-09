@@ -132,3 +132,57 @@ class Main {
 
     }
 }
+
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int num = input.nextInt(); //총 매출의 갯수
+        int count = input.nextInt(); //몇일을 합해서 계산할건지
+
+        int left = 0; //왼쪽 포인터
+
+
+        int max = 0; // 몇일의 매출 합 누가 더 큰지
+        int sum = 0 ; // 몇일의 매출 합
+
+
+        int[] arr = new int[num]; //매출 저장 배열
+
+        for (int i = 0; i < num; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        for (int i = 0; i < count; i++) {
+            sum += arr[i];
+        }
+
+        max = sum;
+
+        while (count < num) {
+
+            sum += arr[count];
+            sum -= arr[left];
+
+            max = Math.max(max, sum);
+
+            count++;
+            left++;
+
+        }
+
+        System.out.println(max);
+
+    }
+}
+
+
