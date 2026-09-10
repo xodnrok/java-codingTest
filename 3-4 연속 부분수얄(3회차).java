@@ -173,6 +173,55 @@ class Main {
     }
 }
 
+3회차 
+    
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int num = input.nextInt(); //몇개의 원소를 받는지
+        int m = input.nextInt(); //합했을때 원하는 값
+        int sum = 0; //원소들의 합
+
+        int count = 0; //정답 카운트
+
+        int left = 0; //왼쪽 포인터
+        int right = 0; //오른쪽 포인터
+
+        int[] arr = new int[num]; //원소 저장 배열
+
+        for (int i = 0; i < num; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        while (right < num || sum >= m) {
+
+            if (sum < m) {
+                sum += arr[right];
+                right++;
+            } else if (sum > m) {
+                sum -= arr[left];
+                left++;
+            } else {
+                count++;
+                sum -= arr[left];
+                left++;
+            }
+        }
+
+        System.out.println(count);
+
+    }
+}
+
+
 
 
 
