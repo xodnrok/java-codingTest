@@ -161,6 +161,51 @@ class Main {
 }
 
 
+3회차 풀이
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //원하는 자연수의 합
+        int sum = 0; //연속되는 숫자들의 합
+        int count = 0; //원하는 자연수의 합이 몇번 나오는지 정답 카운트
+
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = i + 1;
+        }
+
+        int left = 0; //왼쪽 포인터
+        int right = 0; //오른쪽 포인터
+
+        while (right < n / 2 + 1 || sum >= n) {
+
+            if (sum < n) {
+                sum += arr[right];
+                right++;
+            } else if (sum > n) {
+                sum -= arr[left];
+                left++;
+            } else {
+                count++;
+                sum -= arr[left];
+                left++;
+            }
+
+        }
+
+        System.out.println(count);
+
+    }
+}
+
 
 
 
