@@ -120,3 +120,49 @@ class Main {
     }
 }
 
+3회차 풀이
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //배열의 총길이
+        int k = input.nextInt();//변경 가능 횟수
+
+        int left = 0;
+        int count = 0;
+        int[] arr = new int[n];
+        int max = 0;
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        for (int i = 0; i < n; i++) {
+
+            if (arr[i] == 0) {
+                count++;
+            }
+
+            while (count > k) {
+
+                if (arr[left] == 0) {
+                    count--;
+                }
+                left++;
+            }
+
+            max = Math.max(max, i - left + 1);
+        }
+
+        System.out.println(max);
+
+
+    }
+}
+
+
