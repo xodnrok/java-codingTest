@@ -194,6 +194,58 @@ class Main {
     }
 }
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String str1 = input.next(); //첫번째 문자
+        String str2 = input.next(); //두번째 문자
+
+        boolean answer = true;
+
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        char[] charArray1 = str1.toCharArray(); //첫번째 문자
+
+        for (char c : charArray1) { //첫번째 문자에 대해서 알파뱃과 알파뱃 갯수 조사
+
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+
+        char[] charArray2 = str2.toCharArray();
+
+        for (char c : charArray2) {
+
+            if (!map.containsKey(c) || map.get(c) == 0) {
+                answer = false;
+                break;
+            } else if (map.containsKey(c)) {
+                map.put(c, map.get(c) - 1);
+            }
+
+
+        }
+
+        if (answer) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+
+    }
+}
+
 
 
 
