@@ -157,3 +157,63 @@ class Main {
     }
 }
 
+
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); // 투표 하는 반 학생수
+        String request = input.next();
+        int max = 0; //제일 많은 투표수
+        char answer = 0; //많은 투표를 받은 키
+        Map<Character, Integer> map = new HashMap<>();
+
+        map.put('A', 0);
+        map.put('B', 0);
+        map.put('C', 0);
+        map.put('D', 0);
+        map.put('E', 0);
+
+
+        for (int i = 0; i < n; i++) {
+
+            char c = request.charAt(i);
+
+            if (c == 'A') {
+                map.put('A', map.get('A') + 1);
+            } else if (c == 'B') {
+                map.put('B', map.get('B') + 1);
+            }else if (c == 'C') {
+                map.put('C', map.get('C') + 1);
+            }else if (c == 'D') {
+                map.put('D', map.get('D') + 1);
+            }else if (c == 'E') {
+                map.put('E', map.get('E') + 1);
+            }
+        }
+
+        for (Character c : map.keySet()) {
+
+            if (map.get(c) > max) {
+                max = map.get(c);
+                answer = c;
+            }
+
+        }
+
+        System.out.println(answer);
+
+
+    }
+}
+
+
