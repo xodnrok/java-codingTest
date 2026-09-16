@@ -216,3 +216,67 @@ class Main {
 }
 
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String s = input.next(); //S문자열
+        String t = input.next(); //t문자열
+
+        Map<Character, Integer> map1 = new HashMap<>(); //s문자열에 대한 맵
+        Map<Character, Integer> map2 = new HashMap<>(); //t문자열에 대한 맵
+
+        char[] charArray1 = s.toCharArray(); //s문자열에 대한 문자배열
+        char[] charArray2 = t.toCharArray(); //t문자열에 대한 문자배열
+
+        int left = 0;
+        int count = 0; //정답 횟수
+
+        for (char c : charArray2) { //t문자열에 대해 갯수와 종류 파악
+
+            map2.put(c, map2.getOrDefault(c, 0) + 1);
+
+        }
+
+        for (int i = 0; i < t.length(); i++) {
+            map1.put(charArray1[i], map1.getOrDefault(charArray1[i], 0) + 1);
+        }
+
+        if (map1.equals(map2)) { //처음 한번 검사
+            count++;
+        }
+
+        for (int i = t.length(); i < s.length(); i++) {
+
+            map1.put(charArray1[i], map1.getOrDefault(charArray1[i], 0) + 1);
+
+            if (map1.get(charArray1[left]) - 1 == 0) {
+                map1.remove(charArray1[left]);
+            } else {
+                map1.put(charArray1[left], map1.get(charArray1[left]) - 1);
+            }
+
+            left++;
+
+            if (map2.equals(map1)) {
+                count++;
+            }
+
+        }
+
+        System.out.println(count);
+
+    }
+}
+
+
+
