@@ -187,3 +187,59 @@ class Main {
     }
 }
 
+3회차 풀이
+
+
+import java.util.*;
+
+
+class Main {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //총 몇일인지
+        int k = input.nextInt(); //몇일을 구간으로 할지
+        List<Integer> answer = new ArrayList<>(); //정답값 저장
+        Map<Integer, Integer> map = new HashMap<>(); //숫자 종류별 확인
+
+        int left = 0;
+
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        for (int i = 0; i < k; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1); //첫째날 매출 종류
+        }
+
+        answer.add(map.size()); //첫째날 매출 종류 저장
+
+        for (int i = k; i < n; i++) {
+
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1); //처음보는 매출종류
+
+            if (map.get(arr[left]) - 1 == 0) { //만약 뺏을때 0이라면
+                map.remove(arr[left]); //해당 키를 삭제
+            } else {
+                map.put(arr[left], map.get(arr[left]) - 1);
+            }
+
+            left++;
+
+            answer.add(map.size());
+        }
+
+        for (Integer i : answer) {
+            System.out.print(i + " ");
+        }
+
+    }
+}
+
+
