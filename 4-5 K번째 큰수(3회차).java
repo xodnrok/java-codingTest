@@ -127,4 +127,127 @@ class Main {
     }
 }
 
+3회차 풀이
 
+import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //카드 의 총 갯수
+        int k = input.nextInt(); //k번째 큰값
+
+        int[] arr = new int[n]; //카드를 저장할 배열 생성
+        Set<Integer> set = new TreeSet<>(Comparator.reverseOrder());//카드합 저장 리스트
+        int sum = 0; // 카드 k개 저장 합
+        int count = 1; //set 원하는 k번째를 찾기위해
+        boolean b = true;
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        for (int i = 0; i < n - 2; i++) {
+            for (int j = i + 1; j < n - 1; j++) {
+                for (int l = j + 1; l < n; l++) {
+                    sum = arr[i] + arr[j] + arr[l];
+                    set.add(sum);
+                    sum = 0;
+                }
+            }
+        }
+
+        for (Integer i : set) {
+            if (count == k) {
+                b = false;
+                System.out.println(i);
+                break;
+            }
+            count++;
+        }
+
+        if (b) {
+            System.out.println(-1);
+        }
+
+
+    }
+}
+
+
+3회차 오답
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //몇개의 카트가 있는지
+        int k = input.nextInt(); //몇 번쨰로 큰거를 뽑느지
+        int sum; //3장의 합
+
+        int count; //몇장뽑았는지 카운트
+
+        int right;
+        int left;
+
+        List<Integer> answer = new ArrayList<>(); //3장의 합 저장 리스트
+
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = input.nextInt();
+        }
+
+
+        for (int i = 0; i < n - 2; i++) {
+
+            sum = arr[i]; //첫카드 기준
+            count = 1; //첫카드 뽑았으므로 1장부터
+            left = i + 1; //뽑는수 넘어갔을경우 빼기위한 번호
+            right = i + 1;//뽑으면서 전진
+
+            while (right < n) {
+
+                if (count == 3) {
+                    answer.add(sum);
+                }
+
+                sum += arr[right];
+                count++;
+
+                if (count > 3) {
+
+                    sum -= arr[left];
+                    count--;
+                    left++;
+
+                }
+
+                right++;
+
+            }
+
+
+        }
+
+        answer.sort(Collections.reverseOrder());
+
+        try {
+            Integer request = answer.get(k);
+            System.out.println(request);
+        } catch (Exception e) {
+            System.out.println(-1);
+        }
+
+
+    }
+}
