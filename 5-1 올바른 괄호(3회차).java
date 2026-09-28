@@ -189,3 +189,54 @@ class Main {
     }
 }
 
+3회차 풀이
+
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        char[] charArray = input.next().toCharArray();
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        boolean b = false;
+
+
+        for (char c : charArray) {
+
+            if (c == ')') {
+
+                if (deque.isEmpty()) {
+                    b = true;
+                    break;
+                }
+
+                Character peek = deque.peek(); // 제일 위에 괄호가 '(' 확인하기
+
+                if (peek == '(') {
+                    deque.pop(); 
+                } else{
+                    b = true;
+                    break;
+                }
+            } else {
+                deque.push(c);
+            }
+
+        }
+
+        if (b || !deque.isEmpty()) {
+            System.out.println("NO");
+        } else {
+            System.out.println("YES");
+        }
+
+
+    }
+}
+
+
