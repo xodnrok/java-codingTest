@@ -128,5 +128,55 @@ class Main {
 }
 
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        char[] charArray = input.next().toCharArray();
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        int count = 0; //잘려진 막대기의 총 수
+
+        char back = 'q'; //이전 문자 체크
+
+        for (char c : charArray) {
+
+
+            if (c == ')') {
+
+                if (back == '(') { //레이저
+                    deque.pop();
+                    count += deque.size();
+
+                } else{ // ')' 일경우 막대의 끝을 나타냄
+                    count++;
+                    deque.pop();
+                }
+
+            } else {
+
+                deque.push(c);
+            }
+
+            back = c;
+
+        }
+
+        System.out.println(count);
+
+
+    }
+}
+
+
+
 
 
