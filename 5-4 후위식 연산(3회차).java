@@ -129,4 +129,68 @@ class Main {
     }
 }
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String[] arr = input.next().split("");
+
+        Deque<String> deque = new ArrayDeque<>();
+
+        for (String s : arr) {
+
+            if (s.equals("+")) {
+
+                String num1 = deque.pop();
+                String num2 = deque.pop();
+
+                int num3 = Integer.parseInt(num2) + Integer.parseInt(num1);
+
+                deque.push(String.valueOf(num3));
+
+            } else if (s.equals("-")) {
+
+                String num1 = deque.pop();
+                String num2 = deque.pop();
+
+                int num3 = Integer.parseInt(num2) - Integer.parseInt(num1);
+
+                deque.push(String.valueOf(num3));
+
+            } else if (s.equals("*")) {
+
+                String num1 = deque.pop();
+                String num2 = deque.pop();
+
+                int num3 = Integer.parseInt(num2) * Integer.parseInt(num1);
+
+                deque.push(String.valueOf(num3));
+
+            } else if (s.equals("/")) {
+
+                String num1 = deque.pop();
+                String num2 = deque.pop();
+
+                int num3 = Integer.parseInt(num2) / Integer.parseInt(num1);
+
+                deque.push(String.valueOf(num3));
+
+            } else {
+                deque.push(s);
+            }
+
+        }
+        System.out.println(deque.pop());
+
+
+    }
+}
+
 
