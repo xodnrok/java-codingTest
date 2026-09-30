@@ -183,4 +183,41 @@ class Main {
     }
 }
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        char[] charArray = input.next().toCharArray();
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        for (char c : charArray) {
+
+            if (c == ')') {
+
+                while (deque.peek() != '(') {
+                    deque.pop();              //괄호 사이에 있는 문자 제거
+                }
+                deque.pop(); //괄호 직전까지 빼고 반복문 멈추기때문에 마지막 '(' 제거
+            } else {
+                deque.push(c);
+            }
+        }
+
+        int size = deque.size();
+
+        for (int i = 0; i < size; i++) {
+            System.out.print(deque.pollLast());
+        }
+
+    }
+}
+
 
