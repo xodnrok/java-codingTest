@@ -192,3 +192,75 @@ class Main {
     }
 }
 
+
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt();//인형뽑기의 크기 N x N
+
+        int[][] board = new int[n][n];//인형뽑기 장치의 배열
+
+        for (int i = 0; i < n; i++) { //인형뽑기 장치 초기화
+
+            for (int j = 0; j < n; j++) {
+
+                board[i][j] = input.nextInt();
+            }
+        }
+
+        int m = input.nextInt();//인형뽑는 크레인의 움직이는 총 횟수
+
+        int[] moves = new int[m];//인형뽑는 크레인의 움직이는 좌표
+
+        for (int i = 0; i < m; i++) {
+            moves[i] = input.nextInt() - 1; //좌표 초기화
+        }
+
+        Deque<Integer> deque = new ArrayDeque<>(); //인형뽑고 나서 인형 저장 통(바구니)
+        int count = 0; // 터트려저 사라진 인형의 갯수
+
+
+        for (int move : moves) { //크레인의 움직이는 좌표 하나씩 가져오기
+
+            for (int i = 0; i < n; i++) { //인형뽑기(보드) 탐색
+
+                if (board[i][move] != 0) { //빈공간(0) 이 아니라면 인형뽑고 그자리 0 으로 채우고 바구니에 넣기
+
+                    if (deque.isEmpty()) { //만약 바구니 통이 비어있다면 그냥 인형을 넣는다.
+                        deque.push(board[i][move]);
+                    } else { //만약 바구니 통이 비어있지 않다면
+
+                        if (deque.peek().equals(board[i][move])) { //직전 인형과 비교해서 같으면 빼기
+                            deque.pop();
+                            count += 2;
+                        } else { //직전 인형과 같지 않다면 그냥 넣기
+                            deque.push(board[i][move]);
+                        }
+
+                    }
+
+                    board[i][move] = 0;
+                    break;
+
+                }
+
+            }
+
+
+        }
+
+        System.out.println(count);
+
+
+    }
+}
+
+
