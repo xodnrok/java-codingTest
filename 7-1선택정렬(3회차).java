@@ -136,5 +136,62 @@ class Main {
 
 }
 
+3회차 풀이
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt();
+
+        int[] arr = new int[n];
+
+        int min; //최솟값
+        int index;
+        int temp = 0; //교체하기 위해서 임시 값 저장
+
+        boolean b;
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        for (int i = 0; i < n - 1; i++) {
+
+            min = arr[i]; //최솟값 찾기
+            b = false;
+            index = 0;
+
+            for (int j = i + 1; j < n; j++) {
+
+                if (arr[j] < min) {
+                    b = true;
+                    min = arr[j];//끝가지 탐색하면서 제일 작은 값 저장
+                    index = j; //최솟값의 위치(인덱스)도 저장
+                }
+            }
+
+            if (b) { //작은값을 발견시
+                temp = arr[i];
+                arr[i] = min;
+                arr[index] = temp;
+            }
+
+        }
+
+        for (int i : arr) {
+            System.out.print(i +" ");
+        }
+
+
+    }
+}
+
 
 
