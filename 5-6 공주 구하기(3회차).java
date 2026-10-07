@@ -160,4 +160,43 @@ class Main {
     }
 }
 
+3회차 풀이
+
+import java.util.*;
+
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //몇 번째 왕까지 있는지
+        int k = input.nextInt(); //특정 번호(외치면 탈락)
+
+        int count = 0; //번호 횟수 기억
+
+        Deque<Integer> deque = new ArrayDeque<>(); //번호통
+
+        for (int i = 0; i < n; i++) {
+            deque.offer(i + 1);
+        }
+
+        while (deque.size() > 1) {
+
+            for (int i = 0; i < k - 1; i++) { //특정 번호 직전까지 반복문으로 빼고 넣고 반복
+                deque.offer(deque.poll());
+            }
+
+            deque.poll(); //특정번호이므로 아예 값을 제거
+
+        }
+
+        System.out.println(deque.poll());
+
+
+    }
+}
+
+
 
