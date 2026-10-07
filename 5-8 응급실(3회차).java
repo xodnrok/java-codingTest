@@ -186,7 +186,89 @@ class Person {
     }
 }
 
+3회차 풀이
 
+import java.util.*;
+
+class Person {
+
+    int number; // 환자 접수 번호
+    int level; // 환자 위험도
+
+    public Person(int number, int level) {
+        this.number = number;
+        this.level = level;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n = input.nextInt(); //몇명의 환자가 있는지
+        int m = input.nextInt(); //M번째 환자(이 환자가 몇번째에 치료받는지)
+        int count = 0; //진료 까지 걸린 횟수
+        List<Person> peoples = new ArrayList<>(); //각 환자들 리스트로 저장
+        boolean check;
+
+        for (int i = 0; i < n; i++) {
+            peoples.add(new Person(i, input.nextInt())); //위험도 저장
+        }
+
+        Deque<Person> deque = new ArrayDeque<>(); //환자 순서 체크
+
+        for (Person people : peoples) {
+            deque.offer(people);
+        }
+
+        while (true) {
+
+            check = false;
+
+            Person pollPerson = deque.poll(); //순서대로 가장 앞에있는 환자를 뽑음
+            for (Person person : deque) { //뽑은 환자보다 높은 위험도를 가진 환자가 있는지 iter로 비교하기
+                if (person.level > pollPerson.level) {
+                    check = true;
+                    break;
+                }
+            }
+
+            if (check) { //나보다 높은게 있었다면
+                deque.offer(pollPerson); // 뽑은 환자를 다시 집어넣기
+            } else { //나보다 높은 환자가 없었다면 진료시작
+                count++; //진료횟수 추가
+                if (pollPerson.number == m) {//선택한 번호가 진료받은 환자와 같은지 확인
+                    System.out.println(count);
+                    break;
+                }
+            }
+
+
+
+        }
+
+
+
+    }
+}
 
 
 
