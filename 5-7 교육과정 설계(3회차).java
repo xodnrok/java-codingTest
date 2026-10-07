@@ -130,3 +130,52 @@ class Main {
 }
 
 
+3회차 풀이
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String[] strings1 = input.next().split("");//필수 과목(순서 지켜야함)
+
+        String[] strings2 = input.next().split("");//계획한 시간표
+
+        Deque<String> deque = new ArrayDeque<>(); //필수 과목 순서 확인을 위해 큐 로사용
+        ArrayDeque<String> deque2 = new ArrayDeque<>();//계획한 시간표 큐에 넣기
+
+        for (String s : strings1) {
+            deque.offer(s); //필수과목을 큐에 저장
+        }
+
+        for (String s : strings2) {
+            deque2.offer(s);
+        }
+
+        while (!deque2.isEmpty()) {
+
+            String poll = deque2.poll(); //계획한 시간표에서 하나 뽑기
+
+            if (poll.equals(deque.peekFirst())) { //만약 뽑은 시간표가 필수 과목 제일 앞에있는것과 같다면
+                                                  // 필수과목 큐에서 제일 앞에 제거
+                deque.poll();
+            }
+
+        }
+
+        if (deque.isEmpty()) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+    }
+}
+
+
+
